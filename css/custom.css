@@ -14,7 +14,7 @@ a {
 
 a:hover,
 a:focus {
-    color: pink;
+    color: purple;
 }
 
 p {
@@ -96,7 +96,7 @@ header .header-content .header-content-inner p {
 
 .intro {
 	color: #fff;
-    background-color: hotpink;
+    background-color: purple;
     padding: 70px 0;
     text-align: center;
 }
@@ -352,9 +352,9 @@ fieldset[disabled] .btn-default.active {
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
-    border-color: pink;
+    border-color: purple;
     color: #fff;
-    background-color: pink;
+    background-color: purple;
 }
 
 .btn-primary:active,
