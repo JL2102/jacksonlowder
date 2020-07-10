@@ -423,9 +423,9 @@ img::-moz-selection {
 }
 
 .text-primary {
-    color: blue;
+    color: red;
 }
 
 .bg-primary {
-    background-color: blue;
+    background-color: red;
 }
