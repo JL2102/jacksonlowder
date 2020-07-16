@@ -6,7 +6,7 @@ body {
 }
 
 a {
-    color: #1B263B;
+    color: #713AA9;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
@@ -27,7 +27,7 @@ header {
     width: 100%;
     min-height: auto;
     text-align: center;
-    color: #fff;
+    color: #C6C6C6;
     background-image: url('../images/header.jpg');
     background-position: center;
     -webkit-background-size: cover;
