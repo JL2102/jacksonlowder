@@ -195,7 +195,7 @@ header .header-content .header-content-inner p {
 
 .navbar-default {
     border-color: rgba(34,34,34,.05);
-    background-color: #fff;
+    background-color: #C6C6C6;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
