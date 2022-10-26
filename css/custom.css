@@ -434,3 +434,8 @@ img::-moz-selection {
 .bg-primary {
     background-color: #1B263B;
 }
+
+.projects {
+	font-weight: bold;
+	color: #1B263B
+}
