@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>Jackson Lowder</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
+    <link href="css/custom.css" rel="stylesheet">
+
+    <!-- Custom Fonts from Google -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    
+</head>
+
+<body>
+
+	<!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1>Current Projects</h1>
+            </div>
+        </div>
+    </header>
+	
+		<!-- Intro Section -->
+    <section class="intro">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2 class="section-heading">Projects</h2>
+                    <p class="container2">A gallery of projects that I have completed /  still am working on, these are either school projects or side projects.</p>
+					<p class="container2">Please reach out if you have any questions!</p>
+					
+		
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Navigation -->
+    <nav id="siteNav" class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Logo and responsive toggle -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">
+                	<span class="glyphicon glyphicon-fire"></span> 
+                	Jackson
+                </a>
+            </div>
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="active">
+                        <a href="Projects.html">Projects</a>
+					<li>
+                        <a href="Profile.html">Profile</a>
+                    </li>
+                    <li>
+                        <a href="contacts.html">Contact</a>
+                    </li>
+                </ul>
+                
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container -->
+    </nav>
+	<div class="content">
+        <div class="column">
+            <h3 class="section-heading btn btn-default btn-lg projects"><a href="https://steamcommunity.com/id/JL2102/myworkshopfiles/?p=1" target="_blank">Game Modding</a></h3>
+            <p class="container2">I have many different side projects underneath the game Ark: Survival Evolved that uses a modified Unreal Engine 4 Devkit called Ark Devkit. Using a background in C++ programming, and resources online. I have used my programming talents to create an assortment of mods that go from entire redevelopment of game mechanics, to creatures and animal moddling, and custom 3d modeling and 3d texture design. </p>
+
+<!-- 			<p><a href="https://steamcommunity.com/id/JL2102/myworkshopfiles/?p=1" target="_blank">Here</a> is a link to my Workshop Content, to see the individal projects</p> -->
+			
+			
+        </div>  
+
+
+        <div class="content">
+            <h3 class="section-heading btn btn-default btn-lg projects"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2664227681" target="_blank">Roleplay Apparel</a></h3>
+            <p class="container2">This is the one modding project that I am most proud of. I work on this project with two other people, and as a team we create custom models with custom textures following different clothing themes. This project has over 17 thousand downloads. This project contains over hundreds of thousands of files, including 3d models with skeletons, textures and other artistic values.</p>
+			
+			
+<!-- 			<p><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2664227681" target="_blank">Here</a> is a link to the project page.</p> -->
+        </div>
+		
+		
+	    <div class="content">
+            <h3 class="section-heading section"></h3>
+            <p class="container2"></p>
+        </div>
+
+	    <div class="content">
+            <h3 class="Section-heading section"></h3>
+            <p class="container2"></p>
+        </div>
+	</div>
+
+
+
+
+
+
+<script>
+  const maxCardsX = 3;
+  const setUpGrid = function() {
+      let docWidth = $(document).width();
+      let cardWidth = $(".card").width();
+      let numCardsX = Math.floor(docWidth/cardWidth);
+      numCardsX = Math.max(1,Math.min(maxCardsX, numCardsX));
+      $(".card").each(function(index) {
+          let parent = $(this).parent().parent();
+          let myRow = Math.floor(index/numCardsX);
+          if(!$("#row"+myRow).length) {
+              $("#row0").parent().append("<tr id=\"row" + myRow + "\"></tr>");
+          }
+          $(parent).appendTo("#row"+myRow);
+      });
+  };
+  setUpGrid();
+  $(window).resize(setUpGrid);
+</script>
+
+
+
+    <footer class="page-footer">
+    
+    	<!-- Contact -->
+        <div class="contact">
+        	<div class="container">
+				<h2 class="section-heading">Contact</h2>
+				<p><span class="glyphicon glyphicon-envelope"></span><br>Contact@jacksonlowder.com</p>
+        	</div>
+        </div>
+        	
+    <!-- jQuery -->
+    <script src="js/jquery-1.11.3.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    
+    <!-- Custom Javascript -->
+    <script src="js/custom.js"></script>
+
+</body>
+
+</html>
