@@ -94,6 +94,10 @@ header .header-content .header-content-inner p {
     margin-bottom: 20px;
 }
 
+.section {
+    margin-bottom: 20px;
+}
+
 .intro {
 	color: #C6C6C6;
     background-color: #713AA9;
