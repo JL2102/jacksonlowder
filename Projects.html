@@ -20,6 +20,7 @@
 
     <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
     <link href="css/custom.css" rel="stylesheet">
+    <link href="css/terminaltheme.css" rel="stylesheet">
 
     <!-- Custom Fonts from Google -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -28,41 +29,20 @@
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav id="siteNav" class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-default">
         <div class="container">
-            <!-- Logo and responsive toggle -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">
-                	<span class="glyphicon glyphicon-fire"></span> 
-                	Jackson
-                </a>
+                <a class="navbar-brand" href="index.html">~ jackson $</a>
             </div>
-            <!-- Navbar links -->
-            <div class="collapse navbar-collapse" id="navbar">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li class="active">
-                        <a href="Projects.html">Projects</a>
-					<li>
-                        <a href="Profile.html">Profile</a>
-                    </li>
-                    <li>
-                        <a href="contacts.html">Contact</a>
-                    </li>
-                </ul>
-                
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container -->
+            <ul class="nav navbar-nav">
+                <li><a href="Profile.html">Profile</a></li>
+                <li><a href="Projects.html">Projects</a></li>
+                <li><a href="Contacts.html">Contact</a></li>
+            </ul>
+        </div>
     </nav>
+
+
 	<!-- Header -->
     <header>
         <div class="header-content">
@@ -71,83 +51,32 @@
             </div>
         </div>
     </header>
-    <section class="intro">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <h2 class="section-heading">Projects</h2>
-                    <p class="container2">A gallery of projects that I have completed /  still am working on, these are either school projects or side projects.</p>
-					<p class="container2">Please reach out if you have any questions!</p>
-					
-		
-                </div>
+
+
+
+<div class="projects-grid">
+    <a class="project-card" href="" target="_blank">
+        <div class="card">
+            <img class="project-img" src="">
+            <div class="project-content">
+                <h4>Dark Theme'd Chrome</h4>
+                <p>A Chrome extension that provides a dark mode experience for any website, ensuring that images retain their original appearance.</p>
             </div>
         </div>
-    </section>
+    </a>
 
-
-
-<br><br><br>
-<div class="tableview">
-<table>
-	<tr id="row0">
-
-<th>
-	<a class="carda" href="" target="_blank">
-		<div class="card crop">
-		<br>
-		<img class="img" src="">
-			<div class="container-projects">
-				<h4><b><br>Dark Theme'd Chrome</b></h4>
-				<p style="font-size: 12px;">A Chrome extension that provides a dark mode experience for any website, ensuring that images retain their original appearance.</p>
-			</div>
-		</div>
-	</a>
-</th>
-<th>
-	<a class="carda" href="https://steamcommunity.com/id/JL2102/myworkshopfiles/?p=1" target="_blank">
-		<div class="card crop">
-		<img class="img" src="images/ArkBanner.jpg">
-			<div class="container-projects">
-				<h4><b><br>Game Modding</b></h4>
-				<p style="font-size: 12px;">I have many different side projects underneath the game Ark: Survival Evolved that uses a modified Unreal Engine 4 Devkit called Ark Devkit. Using a background in C++ programming, and resources online.</p>
-			</div>
-		</div>
-	</a>
-</th>
-
-	</tr>
-</table>
-<br><br><br>
-<script>
-  const maxCardsX = 3;
-  const setUpGrid = function() {
-      let docWidth = $(document).width();
-      let cardWidth = $(".card").width();
-      let numCardsX = Math.floor(docWidth/cardWidth);
-      numCardsX = Math.max(1,Math.min(maxCardsX, numCardsX));
-      $(".card").each(function(index) {
-          let parent = $(this).parent().parent();
-          let myRow = Math.floor(index/numCardsX);
-          if(!$("#row"+myRow).length) {
-              $("#row0").parent().append("<tr id=\"row" + myRow + "\"></tr>");
-          }
-          $(parent).appendTo("#row"+myRow);
-      });
-  };
-  setUpGrid();
-  $(window).resize(setUpGrid);
-</script>
-
-<footer class="page-footer">
-
-	<!-- Contact -->
-	<div class="contact">
-		<div class="container">
-			<h2 class="section-heading">Contact</h2>
-			<p><span class="glyphicon glyphicon-envelope"></span><br>Contact@jacksonlowder.com</p>
-		</div>
-	</div>
+    <a class="project-card" href="https://steamcommunity.com/id/JL2102/myworkshopfiles/?p=1" target="_blank">
+        <div class="card">
+            <img class="project-img" src="images/ArkBanner.jpg">
+            <div class="project-content">
+                <h4>Game Modding</h4>
+                <p>I have many different side projects underneath the game Ark: Survival Evolved that uses a modified Unreal Engine 4 Devkit called Ark Devkit. Using a background in C++ programming, and resources online.</p>
+            </div>
+        </div>
+    </a>
+    <!-- Add more project cards similarly... -->
+</div>
+    
 
 
 </body></html>
