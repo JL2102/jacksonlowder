@@ -1,0 +1,19 @@
+/* Project_metadata.css */
+
+.metadata-upload-container,
+.metadata-download-container {
+    text-align: center;
+    padding: 20px;
+    background-color: #1E1E1E;
+    border: 2px solid white;
+    margin-top: 20px;
+}
+
+.btn-primary {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+input[type="file"] {
+    display: none;
+}
