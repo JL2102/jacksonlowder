@@ -34,8 +34,8 @@
 
     <div class="contact-container">
         <h2>Contact Jackson Lowder</h2>
-        <p>If you'd like to get in touch with me, please reach out directly at:</p>
-        <a href="mailto:contact@jacksonlowder.com" class="email-link">contact@jacksonlowder.com</a>
+        <p>Interested in connecting? I'm always open to new opportunities and collaborations. Whether you have a question, a project in mind, or just want to say hello, don't hesitate to drop me a line. Reach out directly at the contact information provided, and let's start a conversation that could lead to something amazing. Looking forward to hearing from you!</p>
+        <span id="emailAddress" class="email-link">contact@jacksonlowder.com</span>
     </div>
 
 		
@@ -53,5 +53,15 @@
     <script src="js/custom.js"></script>
 
 </body>
-
+<script>
+    document.getElementById("emailAddress").addEventListener("click", function() {
+        // Copy email address
+        navigator.clipboard.writeText(this.innerText).then(() => {
+            // Show notification
+            alert("Email address copied to clipboard!");
+        }).catch(err => {
+            console.error('Could not copy text: ', err);
+        });
+    });
+    </script>
 </html>

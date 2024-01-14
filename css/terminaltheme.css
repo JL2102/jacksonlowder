@@ -241,3 +241,10 @@ a:hover, .navbar-default .navbar-brand:hover, .navbar-default .navbar-nav > li >
     display: inline-block;
 }
 
+.email-link {
+    cursor: pointer; /* Makes it clear the text is clickable */
+    text-decoration: underline; /* Underlines the text */
+    padding: 2px; /* Optional: Adds some space around the text for better visibility */
+}
+
+
