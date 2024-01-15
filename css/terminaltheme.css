@@ -175,6 +175,9 @@ a:hover, .navbar-default .navbar-brand:hover, .navbar-default .navbar-nav > li >
     margin-left: 30px;
     font-size: 18px;
     line-height: 1.6;
+    max-width: 600px; /* Adjust the value as needed */
+    margin: auto; /* This centers the container */
+    padding: 0 20px; /* Adjust the padding values as needed */
 }
 
 /* Skills Section */
@@ -183,6 +186,8 @@ a:hover, .navbar-default .navbar-brand:hover, .navbar-default .navbar-nav > li >
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
     margin-top: 20px;
+    max-width: 1200px; /* Adjust the value as needed */
+    margin: auto; /* This centers the container */
 }
 
 .skill-box {
@@ -246,3 +251,21 @@ a:hover, .navbar-default .navbar-brand:hover, .navbar-default .navbar-nav > li >
 }
 
 
+#header-section {
+    text-align: center;
+    color: #FFFFFF; /* Or another color that fits the console theme */
+    background-color: #000000; /* Or another terminal-like background */
+    font-family: 'Courier New', monospace; /* Terminal style font */
+}
+
+#header-section h1 {
+    margin: 0;
+    font-size: 2em; /* Adjust size as needed */
+}
+
+.subtitle {
+    font-size: 1em; /* Smaller than the main header */
+    margin-top: 10px;
+    color: #ffffff; /* A subtle green often used in terminals, adjust as needed */
+    opacity: 0.8; /* Slightly less prominent than the main header */
+}
