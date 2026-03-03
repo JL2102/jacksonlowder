@@ -1,0 +1,71 @@
+{
+  "_README": "Edit the psych_question and psych_answer fields below for each person. These are the Page 3 individual questions. Soraya (bride) and Jackson (groom) skip that page.",
+
+  "bridesmaids": [
+    {
+      "name": "macayla",
+      "role": "bridesmaid",
+      "description": "Known associate of the bride. Suspiciously supportive. Has been spotted agreeing with everything the bride says without hesitation. Possibly compromised.",
+      "psych_question": "CHANGEME \u2014 Replace with a personal question for Macayla",
+      "psych_answer": "CHANGEME",
+      "psych_hint": "CHANGEME \u2014 Replace with a hint for Macayla"
+    },
+    {
+      "name": "erin",
+      "role": "bridesmaid",
+      "description": "Frequently seen at the scene of brunch. Claims to have 'no motive' but was spotted browsing Pinterest boards titled 'Wedding Inspo.' Under active surveillance.",
+      "psych_question": "CHANGEME \u2014 Replace with a personal question for Erin",
+      "psych_answer": "CHANGEME",
+      "psych_hint": "CHANGEME \u2014 Replace with a hint for Erin"
+    },
+    {
+      "name": "emmalee",
+      "role": "bridesmaid",
+      "description": "Has an alibi for everything. Suspiciously organized. The kind of person who color-codes a calendar and enjoys it. Dangerous.",
+      "psych_question": "CHANGEME \u2014 Replace with a personal question for Emmalee",
+      "psych_answer": "CHANGEME",
+      "psych_hint": "CHANGEME \u2014 Replace with a hint for Emmalee"
+    },
+    {
+      "name": "soraya",
+      "role": "bride",
+      "description": "THE BRIDE. Also known as 'the reason we are all here.' Claims innocence despite orchestrating the entire event. Primary person of interest.",
+      "psych_question": null,
+      "psych_answer": null
+    }
+  ],
+
+  "groomsmen": [
+    {
+      "name": "andy",
+      "role": "groomsman",
+      "description": "Quiet. Too quiet. Either deeply thoughtful or completely checked out. Both are suspicious.",
+      "psych_question": "What was the name of the park where we played Basketball after school",
+      "psych_answer": "Bent Park",
+      "psych_hint": "The Park near your parent's First house?"
+    },
+    {
+      "name": "ryan",
+      "role": "groomsman",
+      "description": "Last seen offering unsolicited advice with full confidence. Says he's 'just vibing.' Vibing is not an alibi, Ryan.",
+      "psych_question": "What was the pokemon game we colored our 4th Grade Bridge called?",
+      "psych_answer": "Gold and Silver",
+      "psych_hint": "The answer is metal and metal"
+    },
+    {
+      "name": "curtis",
+      "role": "groomsman",
+      "description": "Claims to be 'low maintenance.' Currently high on the suspect list. Has been known to disappear for hours with zero communication.",
+      "psych_question": "What was the theme of legos we played with as kids?",
+      "psych_answer": "Starwars",
+      "psych_hint": "Luke! I am your father!"
+    },
+    {
+      "name": "jackson",
+      "role": "groom",
+      "description": "THE GROOM. Orchestrated this entire investigation. Should be considered the most suspicious person in the room. Possibly delusional.",
+      "psych_question": null,
+      "psych_answer": null
+    }
+  ]
+}
