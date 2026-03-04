@@ -732,7 +732,7 @@
                 <div class="narration-text" id="narrationDisplay4">
                     You cannot solve this without understanding the origin story. Surface-level acquaintances should reconsider continuing.
                 </div>
-                <p style="font-weight:bold; font-size:1.05em;">How long did it take Jackson to move in?</p>
+                <p style="font-weight:bold; font-size:1.05em;">How long did it take Jackson to move in to Soraya's Apartment?</p>
                 <div class="choices" id="page4Choices">
                     <!-- Populated by JS -->
                 </div>
@@ -1029,21 +1029,16 @@
             // Only show the user's own group
             const isBrideSide = currentPerson.type === 'bridesmaid' || currentPerson.type === 'bride';
 
-            if (isBrideSide) {
-                const bTitle = document.createElement('div');
-                bTitle.className = 'suspect-section-title';
-                bTitle.textContent = '\u2014 Bridesmaids \u2014';
-                grid.appendChild(bTitle);
+            const title = document.createElement('div');
+            title.className = 'suspect-section-title';
+            title.textContent = '\u2014 Suspects \u2014';
+            grid.appendChild(title);
 
+            if (isBrideSide) {
                 Object.values(people)
                     .filter(p => p.type === 'bridesmaid' || p.type === 'bride')
                     .forEach(p => grid.appendChild(createSuspectCard(p)));
             } else {
-                const gTitle = document.createElement('div');
-                gTitle.className = 'suspect-section-title';
-                gTitle.textContent = '\u2014 Groomsmen \u2014';
-                grid.appendChild(gTitle);
-
                 Object.values(people)
                     .filter(p => p.type === 'groomsman' || p.type === 'groom')
                     .forEach(p => grid.appendChild(createSuspectCard(p)));
@@ -1303,11 +1298,13 @@
             if (currentPerson.name === 'curtis') roleText = 'BEST MAN';
             if (currentPerson.name === 'erin') roleText = 'MAID OF HONOR';
 
+            const isGroomSide = currentPerson.type === 'groomsman' || currentPerson.type === 'groom';
+
             const lines = [
-                { text: 'The bouquet was never stolen.', cls: 'reveal-line' },
+                { text: isGroomSide ? 'The boutonniere was never stolen.' : 'The bouquet was never stolen.', cls: 'reveal-line' },
                 { text: 'It was secured.', cls: 'reveal-line' },
                 { text: 'For someone emotionally durable.', cls: 'reveal-line' },
-                { text: 'Someone capable of managing chaos, holding my drink, fixing my hair, and validating me under pressure.', cls: 'reveal-line' },
+                { text: isGroomSide ? 'Someone capable of handling the chaos, holding my drink, keeping me in line, and making sure I don\'t lose my mind when the pressure kicks in.' : 'Someone capable of managing chaos, holding my drink, fixing my hair, and validating me under pressure.', cls: 'reveal-line' },
                 { text: 'You have been identified as a primary suspect.', cls: 'reveal-line' },
                 { text: 'Congratulations.', cls: 'reveal-line', style: 'font-weight:bold; font-size:1.1em;' },
                 { text: 'You are being promoted to ' + roleText + '.', cls: 'reveal-role' },
