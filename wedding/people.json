@@ -40,17 +40,17 @@
       "name": "andy",
       "role": "groomsman",
       "description": "Quiet. Too quiet. Either deeply thoughtful or completely checked out. Both are suspicious.",
-      "psych_question": "What was the name of the park where we played Basketball after school",
+      "psych_question": "What was the name of the park where we played basketball after school",
       "psych_answer": "Bent Park",
-      "psych_hint": "The Park near your parent's First house?"
+      "psych_hint": "The Park near your parent's first house?"
     },
     {
       "name": "ryan",
       "role": "groomsman",
       "description": "Last seen offering unsolicited advice with full confidence. Says he's 'just vibing.' Vibing is not an alibi, Ryan.",
-      "psych_question": "What was the pokemon game we colored our 4th Grade Bridge called?",
+      "psych_question": "What was the Pokemon game we colored our 4th Grade bridge called?",
       "psych_answer": "Gold and Silver",
-      "psych_hint": "The answer is metal and metal"
+      "psych_hint": "The answer is Au and Ag"
     },
     {
       "name": "curtis",
