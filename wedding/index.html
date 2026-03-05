@@ -732,7 +732,7 @@
                 <div class="narration-text" id="narrationDisplay4">
                     You cannot solve this without understanding the origin story. Surface-level acquaintances should reconsider continuing.
                 </div>
-                <p style="font-weight:bold; font-size:1.05em;">How long did it take Jackson to move in to Soraya's Apartment?</p>
+                <p id="page4Question" style="font-weight:bold; font-size:1.05em;"></p>
                 <div class="choices" id="page4Choices">
                     <!-- Populated by JS -->
                 </div>
@@ -1138,7 +1138,20 @@
             document.getElementById('page4Error').classList.remove('show');
             document.getElementById('page4Success').classList.remove('show');
 
-            const options = [
+            const isBrideSide = currentPerson.type === 'bridesmaid' || currentPerson.type === 'bride';
+
+            if (isBrideSide) {
+                document.getElementById('page4Question').textContent = 'Soraya got a tampon stuck up her cooter, within the first 24 hours of dating Jackson. What was used to extract this foreign object while she had a panic attack on a bathroom floor?';
+            } else {
+                document.getElementById('page4Question').textContent = 'How long did it take Jackson to move in to Soraya\'s Apartment?';
+            }
+
+            const options = isBrideSide ? [
+                { text: 'A) Jackson\'s fingers', correct: false },
+                { text: 'B) Soraya\'s mom\'s fingers', correct: false },
+                { text: 'C) Tweezers from her nephew\'s toy Dr kit', correct: true },
+                { text: 'D) There wasn\'t a tampon', correct: false }
+            ] : [
                 { text: 'A) 6 months', correct: false },
                 { text: 'B) 2 weeks', correct: true },
                 { text: 'C) After the wedding', correct: false },
@@ -1171,7 +1184,7 @@
             const options = isBrideSide ? [
                 { text: 'A) Win an Olympic medal', correct: false },
                 { text: 'B) Rewire a house', correct: false },
-                { text: 'C) Master a niche skill in 48 hours', correct: false },
+                { text: 'C) Get a Guinness World Record for most Pogo stick jumps', correct: false },
                 { text: 'D) All of the above', correct: true }
             ] : [
                 { text: 'A) Perform open-heart surgery after watching one YouTube video', correct: false },
