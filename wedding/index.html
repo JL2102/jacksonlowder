@@ -1093,10 +1093,8 @@
             <div id="page5" class="page hidden">
                 <h2>Bride / Groom File</h2>
                 <h3>&ldquo;Deep Lore&rdquo;</h3>
-                <div class="narration-text" id="narrationDisplay5">
-                    At this stage of the investigation, only those familiar with my habits may proceed. This includes patterns. Fixations. Minor delusions of grandeur.
-                </div>
-                <p style="font-weight:bold; font-size:1.05em;">Which of these can Soraya confidently do with zero experience?</p>
+                <div class="narration-text" id="narrationDisplay5"></div>
+                <p id="page5Question" style="font-weight:bold; font-size:1.05em;"></p>
                 <div class="choices" id="page5Choices">
                     <!-- Populated by JS -->
                 </div>
@@ -1109,13 +1107,13 @@
                 <div id="page6Question">
                     <h2>The Final Suspect</h2>
                     <div class="narration-text" id="narrationDisplay6">
-                        Three suspects were eliminated. The evidence is undeniable. The bouquet did not vanish randomly. It was taken intentionally. By someone invested. Someone loyal. Someone who would absolutely lie for me if necessary.
+                        Three suspects were eliminated. The evidence is undeniable. The bouquet did not vanish randomly. It was taken intentionally. By someone invested. Someone loyal. Someone who would absolutely lie for Soraya if necessary.
                     </div>
                     <p id="page6QuestionText" style="font-weight:bold; font-size:1.05em;"></p>
                     <div class="choices" id="page6Choices">
                         <!-- Populated by JS -->
                     </div>
-                    <div class="feedback error" id="page6Error">That is incorrect.<br>Please reflect on your involvement in my life.</div>
+                    <div class="feedback error" id="page6Error"></div>
                 </div>
 
                 <div id="page6Reveal" style="display:none;">
@@ -1160,8 +1158,8 @@
             2: "The following individuals have been flagged as persons of interest. Review their profiles carefully. Trust no one.",
             3: "Crimes of this nature require instability or devotion. Often both.",
             4: "You cannot solve this without understanding the origin story. Surface-level acquaintances should reconsider continuing.",
-            5: "At this stage of the investigation, only those familiar with my habits may proceed. This includes patterns. Fixations. Minor delusions of grandeur.",
-            6: "Three suspects were eliminated. The evidence is undeniable. The bouquet did not vanish randomly. It was taken intentionally. By someone invested. Someone loyal. Someone who would absolutely lie for me if necessary."
+            5: "At this stage of the investigation, only those familiar with Soraya's habits may proceed. This includes patterns. Fixations. Minor delusions of grandeur.",
+            6: "Three suspects were eliminated. The evidence is undeniable. The bouquet did not vanish randomly. It was taken intentionally. By someone invested. Someone loyal. Someone who would absolutely lie for Soraya if necessary."
         };
 
         // ===========================
@@ -1686,6 +1684,13 @@
 
             // Different questions for bridesmaids vs groomsmen
             const isBrideSide = currentPerson.type === 'bridesmaid' || currentPerson.type === 'bride';
+            const bgName = isBrideSide ? 'Soraya' : 'Jackson';
+
+            // Update narration and question for the correct side
+            const narText5 = 'At this stage of the investigation, only those familiar with ' + bgName + '\'s habits may proceed. This includes patterns. Fixations. Minor delusions of grandeur.';
+            document.getElementById('narrationDisplay5').textContent = narText5;
+            narrations[5] = narText5;
+            document.getElementById('page5Question').textContent = 'Which of these can ' + bgName + ' confidently do with zero experience?';
 
             const options = isBrideSide ? [
                 { text: 'A) Win an Olympic medal', correct: false },
@@ -1723,9 +1728,11 @@
             // Update text based on side
             const isBrideSide = currentPerson.type === 'bridesmaid' || currentPerson.type === 'bride';
             const item = isBrideSide ? 'bouquet' : 'boutonniere';
-            const narrationText = 'Three suspects were eliminated. The evidence is undeniable. The ' + item + ' did not vanish randomly. It was taken intentionally. By someone invested. Someone loyal. Someone who would absolutely lie for me if necessary.';
+            const bgName = isBrideSide ? 'Soraya' : 'Jackson';
+            const narrationText = 'Three suspects were eliminated. The evidence is undeniable. The ' + item + ' did not vanish randomly. It was taken intentionally. By someone invested. Someone loyal. Someone who would absolutely lie for ' + bgName + ' if necessary.';
             document.getElementById('narrationDisplay6').textContent = narrationText;
             document.getElementById('page6QuestionText').textContent = 'Who took the ' + item + '?';
+            document.getElementById('page6Error').innerHTML = 'That is incorrect.<br>Please reflect on your involvement in ' + bgName + '\'s life.';
             narrations[6] = narrationText;
 
             // Build options: A/B/C are eliminated suspects (crossed out), D is the bride/groom
