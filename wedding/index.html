@@ -327,17 +327,16 @@
             animation: fadeIn 0.4s ease-out;
         }
 
-        /* ===== SUSPECT CARDS ===== */
+        /* ===== SUSPECT LIST ===== */
         .suspects-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
             margin: 20px 0;
             text-align: left;
         }
 
         .suspect-section-title {
-            grid-column: 1 / -1;
             color: #8b0000;
             font-size: 0.9em;
             font-weight: bold;
@@ -345,47 +344,213 @@
             letter-spacing: 3px;
             border-bottom: 2px solid #8b0000;
             padding-bottom: 8px;
-            margin-top: 15px;
+            margin-bottom: 5px;
             font-family: 'Courier New', monospace;
         }
 
-        .suspect-card {
+        .suspect-row {
             background: #fff;
             border: 2px solid #2a2a2a;
-            padding: 15px 12px;
-            position: relative;
+            padding: 14px 18px;
+            cursor: pointer;
+            transition: all 0.3s;
             box-shadow: 3px 3px 0px rgba(0,0,0,0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Courier New', monospace;
         }
 
-        .suspect-name {
+        .suspect-row:hover {
+            background: #2a2a2a;
+            color: #fff;
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0px rgba(0,0,0,0.25);
+        }
+
+        .suspect-row:hover .suspect-row-name {
+            color: #fff;
+        }
+
+        .suspect-row:hover .suspect-row-arrow {
+            color: #8b0000;
+        }
+
+        .suspect-row.viewed {
+            border-color: #2d5a1e;
+            background: rgba(45,90,30,0.04);
+        }
+
+        .suspect-row.viewed::before {
+            content: '\2713';
+            color: #2d5a1e;
             font-weight: bold;
-            font-size: 0.95em;
+            font-size: 1em;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .suspect-row.viewed:hover {
+            background: #2d5a1e;
+        }
+
+        .suspect-row.viewed:hover .suspect-row-name {
+            color: #fff;
+        }
+
+        .suspect-row-name {
+            font-weight: bold;
+            font-size: 0.9em;
             color: #8b0000;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 8px;
-            font-family: 'Courier New', monospace;
         }
 
-        .suspect-desc {
-            font-size: 0.78em;
-            color: #444;
-            line-height: 1.6;
-            font-family: 'Courier New', monospace;
+        .suspect-row-arrow {
+            font-size: 1.2em;
+            color: #888;
+            transition: color 0.3s, transform 0.3s;
+            flex-shrink: 0;
         }
 
-        .suspect-tag {
+        .suspect-row:hover .suspect-row-arrow {
+            transform: translateX(3px);
+        }
+
+        .suspects-progress {
+            font-size: 0.7em;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        /* ===== DOSSIER MODAL ===== */
+        .dossier-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.88);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s;
+        }
+
+        .dossier-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .dossier-modal {
+            background: #f5e6d3;
+            background-image:
+                repeating-linear-gradient(90deg, transparent, transparent 1px, rgba(139,90,43,0.02) 1px, rgba(139,90,43,0.02) 2px),
+                repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(139,90,43,0.02) 1px, rgba(139,90,43,0.02) 2px);
+            border: 3px solid #8b0000;
+            max-width: 600px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            animation: dossierIn 0.35s ease-out;
+        }
+
+        @keyframes dossierIn {
+            from { transform: scale(0.9) translateY(20px); opacity: 0; }
+            to { transform: scale(1) translateY(0); opacity: 1; }
+        }
+
+        .dossier-close {
             position: absolute;
-            top: -8px;
-            right: 10px;
+            top: 12px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 1.8em;
+            color: #8b0000;
+            cursor: pointer;
+            font-weight: bold;
+            line-height: 1;
+            z-index: 10;
+            transition: transform 0.2s;
+        }
+
+        .dossier-close:hover {
+            transform: scale(1.2);
+        }
+
+        .dossier-header {
+            background: #2a2a2a;
+            padding: 25px 30px 20px;
+            border-bottom: 3px solid #8b0000;
+        }
+
+        .dossier-file-num {
+            font-size: 0.7em;
+            color: #8b0000;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .dossier-name {
+            font-size: 1.6em;
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .dossier-tag {
+            display: inline-block;
             background: #8b0000;
             color: #fff;
             font-size: 0.6em;
-            padding: 2px 8px;
+            padding: 3px 10px;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-family: 'Courier New', monospace;
             font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .dossier-body {
+            padding: 25px 30px 30px;
+        }
+
+        .dossier-field {
+            margin-bottom: 14px;
+        }
+
+        .dossier-field:last-child {
+            margin-bottom: 0;
+        }
+
+        .dossier-field-label {
+            font-size: 0.65em;
+            color: #8b0000;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 4px;
+        }
+
+        .dossier-field-value {
+            font-size: 0.85em;
+            color: #333;
+            line-height: 1.8;
+            font-family: 'Courier New', monospace;
+            white-space: pre-line;
         }
 
         /* ===== STAMP ===== */
@@ -589,16 +754,34 @@
                 font-size: 0.83em;
             }
 
-            .suspects-grid {
-                grid-template-columns: 1fr;
+            .suspect-row {
+                padding: 12px 14px;
             }
 
-            .suspect-card {
-                padding: 12px 10px;
+            .suspect-row-name {
+                font-size: 0.78em;
+                letter-spacing: 1px;
             }
 
-            .suspect-desc {
-                font-size: 0.75em;
+            .dossier-modal {
+                max-height: 85vh;
+            }
+
+            .dossier-header {
+                padding: 20px 20px 15px;
+            }
+
+            .dossier-name {
+                font-size: 1.2em;
+                letter-spacing: 3px;
+            }
+
+            .dossier-body {
+                padding: 20px;
+            }
+
+            .dossier-field-value {
+                font-size: 0.8em;
             }
 
             .choice-btn {
@@ -763,6 +946,23 @@
             animation: stampIn 0.5s ease-out forwards;
         }
 
+        .elimination-reason {
+            font-family: 'Courier New', monospace;
+            font-size: 0.78em;
+            color: #555;
+            line-height: 1.7;
+            margin-top: 20px;
+            max-width: 420px;
+            text-align: center;
+            font-style: italic;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .elimination-reason.show {
+            opacity: 1;
+        }
+
         @media (max-width: 600px) {
             .elimination-card {
                 padding: 25px 30px;
@@ -776,6 +976,11 @@
             .elimination-stamp {
                 font-size: 1.1em;
                 padding: 6px 14px;
+            }
+
+            .elimination-reason {
+                font-size: 0.72em;
+                max-width: 300px;
             }
         }
 
@@ -798,6 +1003,20 @@
             <div class="elimination-label">Suspect Status</div>
             <div class="elimination-name" id="eliminationName"></div>
             <div class="elimination-stamp" id="eliminationStamp">ELIMINATED</div>
+            <div class="elimination-reason" id="eliminationReason"></div>
+        </div>
+    </div>
+
+    <!-- Dossier Modal -->
+    <div class="dossier-overlay" id="dossierOverlay" onclick="closeDossier(event)">
+        <div class="dossier-modal">
+            <button class="dossier-close" onclick="closeDossier(event, true)">&times;</button>
+            <div class="dossier-header">
+                <div class="dossier-file-num" id="dossierFileNum"></div>
+                <div class="dossier-name" id="dossierName"></div>
+                <div class="dossier-tag" id="dossierTag"></div>
+            </div>
+            <div class="dossier-body" id="dossierBody"></div>
         </div>
     </div>
 
@@ -833,7 +1052,8 @@
                 <div class="suspects-grid" id="suspectsGrid">
                     <!-- Populated by JS -->
                 </div>
-                <button class="btn" onclick="goToPage3()">Continue Investigation</button>
+                <div class="suspects-progress" id="suspectsProgress"></div>
+                <button class="btn" id="continueBtn" onclick="goToPage3()" disabled style="opacity:0.4; cursor:not-allowed;">Review All Files to Continue</button>
             </div>
 
             <!-- ==================== PAGE 3: PSYCHOLOGICAL PROFILE ==================== -->
@@ -891,7 +1111,7 @@
                     <div class="narration-text" id="narrationDisplay6">
                         Three suspects were eliminated. The evidence is undeniable. The bouquet did not vanish randomly. It was taken intentionally. By someone invested. Someone loyal. Someone who would absolutely lie for me if necessary.
                     </div>
-                    <p style="font-weight:bold; font-size:1.05em;">Who took the bouquet?</p>
+                    <p id="page6QuestionText" style="font-weight:bold; font-size:1.05em;"></p>
                     <div class="choices" id="page6Choices">
                         <!-- Populated by JS -->
                     </div>
@@ -1108,9 +1328,13 @@
                 if (isBrideSide) return p.type === 'bridesmaid' || p.type === 'bride';
                 return p.type === 'groomsman' || p.type === 'groom';
             });
+            // Eliminate all non-bride/groom suspects (bride/groom is the final answer)
             suspectsToEliminate = group
-                .filter(p => p.name.toLowerCase() !== currentPerson.name.toLowerCase())
-                .map(p => p.name.charAt(0).toUpperCase() + p.name.slice(1));
+                .filter(p => p.role !== 'bride' && p.role !== 'groom')
+                .map(p => ({
+                    name: p.name.charAt(0).toUpperCase() + p.name.slice(1),
+                    reason: p.elimination_reason || ''
+                }));
             eliminatedNames = [];
             // Shuffle
             for (let i = suspectsToEliminate.length - 1; i > 0; i--) {
@@ -1125,16 +1349,19 @@
                 return;
             }
 
-            const name = suspectsToEliminate.shift();
-            eliminatedNames.push(name);
+            const suspect = suspectsToEliminate.shift();
+            eliminatedNames.push(suspect.name);
             const overlay = document.getElementById('eliminationOverlay');
             const nameEl = document.getElementById('eliminationName');
             const stamp = document.getElementById('eliminationStamp');
+            const reasonEl = document.getElementById('eliminationReason');
 
             // Reset
-            nameEl.textContent = name;
+            nameEl.textContent = suspect.name;
             nameEl.classList.remove('crossed');
             stamp.classList.remove('show');
+            reasonEl.textContent = suspect.reason;
+            reasonEl.classList.remove('show');
 
             // Stop narration during elimination
             stopNarration();
@@ -1148,13 +1375,16 @@
             // Show ELIMINATED stamp
             setTimeout(() => stamp.classList.add('show'), 1300);
 
+            // Show reason
+            setTimeout(() => reasonEl.classList.add('show'), 1900);
+
             // Fade out and continue
             setTimeout(() => {
                 overlay.classList.remove('active');
                 setTimeout(() => {
                     if (callback) callback();
                 }, 500);
-            }, 2800);
+            }, 8000);
         }
 
         function showEliminations(count, callback) {
@@ -1220,11 +1450,14 @@
         // ===========================
         //  PAGE 2: SUSPECTS
         // ===========================
+        let viewedSuspects = new Set();
+        let totalSuspects = 0;
+
         function buildSuspectsPage() {
             const grid = document.getElementById('suspectsGrid');
             grid.innerHTML = '';
+            viewedSuspects = new Set();
 
-            // Only show the user's own group
             const isBrideSide = currentPerson.type === 'bridesmaid' || currentPerson.type === 'bride';
 
             const title = document.createElement('div');
@@ -1232,33 +1465,104 @@
             title.textContent = '\u2014 Suspects \u2014';
             grid.appendChild(title);
 
-            if (isBrideSide) {
-                Object.values(people)
-                    .filter(p => p.type === 'bridesmaid' || p.type === 'bride')
-                    .forEach(p => grid.appendChild(createSuspectCard(p)));
-            } else {
-                Object.values(people)
-                    .filter(p => p.type === 'groomsman' || p.type === 'groom')
-                    .forEach(p => grid.appendChild(createSuspectCard(p)));
-            }
+            const group = Object.values(people).filter(p => {
+                if (isBrideSide) return p.type === 'bridesmaid' || p.type === 'bride';
+                return p.type === 'groomsman' || p.type === 'groom';
+            });
+            totalSuspects = group.length;
+
+            group.forEach((p, i) => grid.appendChild(createSuspectRow(p, i)));
+            updateSuspectsProgress();
         }
 
-        function createSuspectCard(person) {
-            const card = document.createElement('div');
-            card.className = 'suspect-card';
+        function createSuspectRow(person, index) {
+            const row = document.createElement('div');
+            row.className = 'suspect-row';
+            row.id = 'suspect-row-' + person.name;
+
+            const displayName = person.name.charAt(0).toUpperCase() + person.name.slice(1);
+
+            const nameEl = document.createElement('span');
+            nameEl.className = 'suspect-row-name';
+            nameEl.textContent = 'Suspect File #' + (index + 1) + ': ' + displayName;
+
+            const arrow = document.createElement('span');
+            arrow.className = 'suspect-row-arrow';
+            arrow.innerHTML = '&#9654;';
+
+            row.appendChild(nameEl);
+            row.appendChild(arrow);
+
+            row.onclick = function() { openDossier(person, index); };
+
+            return row;
+        }
+
+        function openDossier(person, index) {
+            const overlay = document.getElementById('dossierOverlay');
+            const displayName = person.name.charAt(0).toUpperCase() + person.name.slice(1);
 
             let tag = 'SUSPECT';
             if (person.role === 'bride') tag = 'THE BRIDE';
             if (person.role === 'groom') tag = 'THE GROOM';
 
-            const displayName = person.name.charAt(0).toUpperCase() + person.name.slice(1);
+            document.getElementById('dossierFileNum').textContent = 'Suspect File #' + (index + 1);
+            document.getElementById('dossierName').textContent = displayName;
+            document.getElementById('dossierTag').textContent = tag;
 
-            card.innerHTML =
-                '<div class="suspect-tag">' + tag + '</div>' +
-                '<div class="suspect-name">' + displayName + '</div>' +
-                '<div class="suspect-desc">' + person.description + '</div>';
+            // Build body fields
+            const body = document.getElementById('dossierBody');
+            body.innerHTML = '';
 
-            return card;
+            const reserved = ['name','role','type','description','psych_question','psych_answer','psych_hint','elimination_reason'];
+            Object.keys(person).forEach(key => {
+                if (reserved.includes(key) || key.startsWith('_') || person[key] == null) return;
+                const label = key.replace(/_/g, ' ');
+                body.innerHTML +=
+                    '<div class="dossier-field">' +
+                        '<div class="dossier-field-label">' + label + '</div>' +
+                        '<div class="dossier-field-value">' + person[key] + '</div>' +
+                    '</div>';
+            });
+
+            // Profile last
+            body.innerHTML +=
+                '<div class="dossier-field">' +
+                    '<div class="dossier-field-label">Profile</div>' +
+                    '<div class="dossier-field-value">' + person.description + '</div>' +
+                '</div>';
+
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            // Mark viewed
+            viewedSuspects.add(person.name);
+            const row = document.getElementById('suspect-row-' + person.name);
+            if (row) row.classList.add('viewed');
+            updateSuspectsProgress();
+        }
+
+        function closeDossier(event, forceClose) {
+            const overlay = document.getElementById('dossierOverlay');
+            if (forceClose || event.target === overlay) {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function updateSuspectsProgress() {
+            const progress = document.getElementById('suspectsProgress');
+            const btn = document.getElementById('continueBtn');
+            const count = viewedSuspects.size;
+
+            progress.textContent = 'Files reviewed: ' + count + ' / ' + totalSuspects;
+
+            if (count >= totalSuspects) {
+                btn.disabled = false;
+                btn.textContent = 'Continue Investigation';
+                btn.style.opacity = '1';
+                btn.style.cursor = 'pointer';
+            }
         }
 
         // ===========================
@@ -1416,7 +1720,15 @@
             document.getElementById('page6Question').style.display = '';
             document.getElementById('page6Reveal').style.display = 'none';
 
-            // Build options: A/B/C are eliminated suspects (crossed out), D is the current person
+            // Update text based on side
+            const isBrideSide = currentPerson.type === 'bridesmaid' || currentPerson.type === 'bride';
+            const item = isBrideSide ? 'bouquet' : 'boutonniere';
+            const narrationText = 'Three suspects were eliminated. The evidence is undeniable. The ' + item + ' did not vanish randomly. It was taken intentionally. By someone invested. Someone loyal. Someone who would absolutely lie for me if necessary.';
+            document.getElementById('narrationDisplay6').textContent = narrationText;
+            document.getElementById('page6QuestionText').textContent = 'Who took the ' + item + '?';
+            narrations[6] = narrationText;
+
+            // Build options: A/B/C are eliminated suspects (crossed out), D is the bride/groom
             const labels = ['A', 'B', 'C'];
             eliminatedNames.forEach((name, i) => {
                 if (i >= 3) return;
@@ -1430,10 +1742,14 @@
                 container.appendChild(btn);
             });
 
-            const currentName = currentPerson.name.charAt(0).toUpperCase() + currentPerson.name.slice(1);
+            // Find the bride/groom as the correct answer
+            const answerPerson = Object.values(people).find(p =>
+                isBrideSide ? p.type === 'bride' : p.type === 'groom'
+            );
+            const answerName = answerPerson.name.charAt(0).toUpperCase() + answerPerson.name.slice(1);
             const btn = document.createElement('button');
             btn.className = 'choice-btn';
-            btn.textContent = 'D) ' + currentName;
+            btn.textContent = 'D) ' + answerName;
             btn.onclick = function() { handleFinalChoice(this, true); };
             container.appendChild(btn);
         }
@@ -1523,18 +1839,36 @@
             if (currentPerson.name === 'curtis') roleText = 'BEST MAN';
             if (currentPerson.name === 'erin') roleText = 'MAID OF HONOR';
 
-            const isGroomSide = currentPerson.type === 'groomsman' || currentPerson.type === 'groom';
+            const isBrideSide = currentPerson.type === 'bridesmaid' || currentPerson.type === 'bride';
+            const item = isBrideSide ? 'bouquet' : 'boutonniere';
+            const isPlayerBrideGroom = currentPerson.type === 'bride' || currentPerson.type === 'groom';
 
-            const lines = [
-                { text: isGroomSide ? 'The boutonniere was never stolen.' : 'The bouquet was never stolen.', cls: 'reveal-line' },
-                { text: 'It was secured.', cls: 'reveal-line' },
-                { text: 'For someone emotionally durable.', cls: 'reveal-line' },
-                { text: isGroomSide ? 'Someone capable of handling the chaos, holding my drink, keeping me in line, and making sure I don\'t lose my mind when the pressure kicks in.' : 'Someone capable of managing chaos, holding my drink, fixing my hair, and validating me under pressure.', cls: 'reveal-line' },
-                { text: 'You have been identified as a primary suspect.', cls: 'reveal-line' },
-                { text: 'Congratulations.', cls: 'reveal-line', style: 'font-weight:bold; font-size:1.1em;' },
-                { text: 'You are being promoted to ' + roleText + '.', cls: 'reveal-role' },
-                { text: 'This is not a request. Attendance is expected. Complaints will be reviewed but ignored.', cls: 'reveal-footer' }
-            ];
+            let lines;
+            if (isPlayerBrideGroom) {
+                // Special reveal for when the bride/groom plays
+                lines = [
+                    { text: 'The ' + item + ' was never stolen.', cls: 'reveal-line' },
+                    { text: 'You had it the entire time.', cls: 'reveal-line' },
+                    { text: 'You orchestrated this investigation, selected the suspects, and controlled the narrative from the beginning.', cls: 'reveal-line' },
+                    { text: 'The ' + item + ' was always yours.', cls: 'reveal-line' },
+                    { text: isBrideSide ? 'Because you are the bride.' : 'Because you are the groom.', cls: 'reveal-line', style: 'font-weight:bold; font-size:1.1em;' },
+                    { text: 'And none of this works without you.', cls: 'reveal-line' },
+                    { text: isBrideSide ? 'YOU ARE THE BRIDE.' : 'YOU ARE THE GROOM.', cls: 'reveal-role' },
+                    { text: 'Obviously.', cls: 'reveal-footer' }
+                ];
+            } else {
+                // Normal reveal: bride/groom kept it for the player
+                lines = [
+                    { text: 'The ' + item + ' was never stolen.', cls: 'reveal-line' },
+                    { text: isBrideSide ? 'It was kept safe. By the bride.' : 'It was kept safe. By the groom.', cls: 'reveal-line' },
+                    { text: isBrideSide ? 'She held onto it \u2014 not out of suspicion, but out of trust.' : 'He held onto it \u2014 not out of suspicion, but out of trust.', cls: 'reveal-line' },
+                    { text: isBrideSide ? 'For someone capable of managing chaos, holding her drink, fixing her hair, and validating her under pressure.' : 'For someone capable of handling the chaos, holding his drink, keeping him in line, and making sure he doesn\'t lose his mind when the pressure kicks in.', cls: 'reveal-line' },
+                    { text: 'That someone is you.', cls: 'reveal-line', style: 'font-weight:bold; font-size:1.1em;' },
+                    { text: 'Congratulations.', cls: 'reveal-line', style: 'font-weight:bold; font-size:1.1em;' },
+                    { text: 'You are being promoted to ' + roleText + '.', cls: 'reveal-role' },
+                    { text: 'This is not a request. Attendance is expected. Complaints will be reviewed but ignored.', cls: 'reveal-footer' }
+                ];
+            }
 
             // Build narration text for the reveal
             const revealNarration = lines.map(l => l.text).join(' ');
