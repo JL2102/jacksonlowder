@@ -1033,7 +1033,7 @@
                     <p style="margin-bottom:0;">CLASSIFIED INVESTIGATION<br>AUTHORIZED PERSONNEL ONLY</p>
                 </div>
                 <div class="narration-text" id="narrationDisplay1">
-                    The air is crisp. The vibes are fragile. At approximately 4:12 PM, a disappearance occurred. No signs of forced entry. No witnesses. Only mild tension and suspicious silence in the group chat. You have been granted temporary access to the investigation. Do not disappoint us.
+                    It was supposed to be a normal, boho fall wedding day. Not perfect. Just uniquely october love and vibes. Flowers arranged. Guests vaguely dressed. Bride stressed enough to justify three separate panic attacks before 10 a.m. Then came the yell that shook the venue..."The flowers are gone!" A collective gasp fell upon the celebration reminiscent of Paul Revere's distress.
                 </div>
                 <div class="input-group">
                     <label for="nameInput">Enter your name to access the case file:</label>
@@ -1116,11 +1116,21 @@
                     <div class="feedback error" id="page6Error"></div>
                 </div>
 
-                <div id="page6Reveal" style="display:none;">
-                    <div class="stamp">CASE CLOSED</div>
-                    <div id="revealLines">
-                        <!-- Populated by JS -->
-                    </div>
+            </div>
+
+            <!-- ==================== PAGE 7: CASE SUMMARY ==================== -->
+            <div id="page7" class="page hidden">
+                <h2>Case Summary</h2>
+                <div id="caseSummaryContent">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- ==================== PAGE 8: CASE CLOSED ==================== -->
+            <div id="page8" class="page hidden">
+                <h1 style="font-size:2em; letter-spacing:6px; margin-bottom:20px;">CASE CLOSED</h1>
+                <div id="caseClosedContent">
+                    <!-- Populated by JS -->
                 </div>
             </div>
 
@@ -1154,7 +1164,7 @@
         //  NARRATION TEXTS
         // ===========================
         const narrations = {
-            1: "The air is crisp. The vibes are fragile. At approximately 4:12 PM, a disappearance occurred. No signs of forced entry. No witnesses. Only mild tension and suspicious silence in the group chat. You have been granted temporary access to the investigation. Do not disappoint us. Enter your name to access the case file.",
+            1: "It was supposed to be a normal, boho fall wedding day. Not perfect. Just uniquely october love and vibes. Flowers arranged. Guests vaguely dressed. Bride stressed enough to justify three separate panic attacks before 10 a.m. Then came the yell that shook the venue. The flowers are gone! A collective gasp fell upon the celebration reminiscent of Paul Revere's distress. Enter your name to access the case file.",
             2: "The following individuals have been flagged as persons of interest. Review their profiles carefully. Trust no one.",
             3: "Crimes of this nature require instability or devotion. Often both.",
             4: "You cannot solve this without understanding the origin story. Surface-level acquaintances should reconsider continuing.",
@@ -1722,8 +1732,6 @@
 
             // Reset
             document.getElementById('page6Error').classList.remove('show');
-            document.getElementById('page6Question').style.display = '';
-            document.getElementById('page6Reveal').style.display = 'none';
 
             // Update text based on side
             const isBrideSide = currentPerson.type === 'bridesmaid' || currentPerson.type === 'bride';
@@ -1809,15 +1817,8 @@
                 btn.parentElement.querySelectorAll('.choice-btn').forEach(b => b.disabled = true);
 
                 setTimeout(() => {
-                    // Hide question, show reveal
-                    document.getElementById('page6Question').style.display = 'none';
-                    document.getElementById('page6Reveal').style.display = 'block';
-
-                    // Stop narration
-                    stopNarration();
-
-                    // Build reveal lines
-                    buildReveal();
+                    buildCaseSummary();
+                    showPage(7);
                 }, 1200);
             } else {
                 btn.classList.add('incorrect');
@@ -1831,72 +1832,106 @@
         }
 
         // ===========================
-        //  REVEAL BUILDER
+        //  CASE SUMMARY BUILDER (Page 7)
         // ===========================
-        function buildReveal() {
-            const container = document.getElementById('revealLines');
+        function buildCaseSummary() {
+            const container = document.getElementById('caseSummaryContent');
             container.innerHTML = '';
-
-            // Determine role text
-            let roleText = 'BRIDESMAID';
-            if (currentPerson.type === 'groomsman' || currentPerson.type === 'groom') {
-                roleText = 'GROOMSMAN';
-            }
-            // Special roles
-            if (currentPerson.name === 'curtis') roleText = 'BEST MAN';
-            if (currentPerson.name === 'erin') roleText = 'MAID OF HONOR';
 
             const isBrideSide = currentPerson.type === 'bridesmaid' || currentPerson.type === 'bride';
             const item = isBrideSide ? 'bouquet' : 'boutonniere';
-            const isPlayerBrideGroom = currentPerson.type === 'bride' || currentPerson.type === 'groom';
+            const roleMap = { 'erin': 'Maid of Honor', 'curtis': 'Best Man' };
+            const playerRole = roleMap[currentPerson.name] || (isBrideSide ? 'Bridesmaid' : 'Groomsman');
+            const itemEmoji = isBrideSide ? '\uD83D\uDC90' : '\uD83C\uDF3A';
 
-            let lines;
-            if (isPlayerBrideGroom) {
-                // Special reveal for when the bride/groom plays
-                lines = [
-                    { text: 'The ' + item + ' was never stolen.', cls: 'reveal-line' },
-                    { text: 'You had it the entire time.', cls: 'reveal-line' },
-                    { text: 'You orchestrated this investigation, selected the suspects, and controlled the narrative from the beginning.', cls: 'reveal-line' },
-                    { text: 'The ' + item + ' was always yours.', cls: 'reveal-line' },
-                    { text: isBrideSide ? 'Because you are the bride.' : 'Because you are the groom.', cls: 'reveal-line', style: 'font-weight:bold; font-size:1.1em;' },
-                    { text: 'And none of this works without you.', cls: 'reveal-line' },
-                    { text: isBrideSide ? 'YOU ARE THE BRIDE.' : 'YOU ARE THE GROOM.', cls: 'reveal-role' },
-                    { text: 'Obviously.', cls: 'reveal-footer' }
-                ];
-            } else {
-                // Normal reveal: bride/groom kept it for the player
-                lines = [
-                    { text: 'The ' + item + ' was never stolen.', cls: 'reveal-line' },
-                    { text: isBrideSide ? 'It was kept safe. By the bride.' : 'It was kept safe. By the groom.', cls: 'reveal-line' },
-                    { text: isBrideSide ? 'She held onto it \u2014 not out of suspicion, but out of trust.' : 'He held onto it \u2014 not out of suspicion, but out of trust.', cls: 'reveal-line' },
-                    { text: isBrideSide ? 'For someone capable of managing chaos, holding her drink, fixing her hair, and validating her under pressure.' : 'For someone capable of handling the chaos, holding his drink, keeping him in line, and making sure he doesn\'t lose his mind when the pressure kicks in.', cls: 'reveal-line' },
-                    { text: 'That someone is you.', cls: 'reveal-line', style: 'font-weight:bold; font-size:1.1em;' },
-                    { text: 'Congratulations.', cls: 'reveal-line', style: 'font-weight:bold; font-size:1.1em;' },
-                    { text: 'You are being promoted to ' + roleText + '.', cls: 'reveal-role' },
-                    { text: 'This is not a request. Attendance is expected. Complaints will be reviewed but ignored.', cls: 'reveal-footer' }
-                ];
-            }
-
-            // Build narration text for the reveal
-            const revealNarration = lines.map(l => l.text).join(' ');
+            const lines = [
+                { text: 'After reviewing the evidence, interviewing the suspects, and observing a suspicious amount of chaos, investigators have reached the final stage of the case.', cls: 'reveal-line' },
+                { text: 'One by one, suspects were cleared. Alibis checked out. Personalities were analyzed. Slowly the list of possible culprits grew smaller. This leaves investigators with one final realization:', cls: 'reveal-line' },
+                { text: 'The ' + item + ' wasn\'t stolen.', cls: 'reveal-line', style: 'font-weight:bold; font-size:1.1em;' },
+                { html: 'It was reserved...for <span style="font-weight:bold; text-decoration:underline;">you</span>.', cls: 'reveal-line', style: 'font-weight:bold; font-size:1.1em;' },
+            ];
 
             lines.forEach((line, i) => {
                 const el = document.createElement('p');
                 el.className = line.cls;
-                el.textContent = line.text;
-                if (line.style) el.style.cssText = line.style;
+                if (line.html) {
+                    el.innerHTML = line.html;
+                } else {
+                    el.textContent = line.text;
+                }
+                if (line.style) el.style.cssText += line.style;
                 container.appendChild(el);
-
-                // Stagger the reveal
-                setTimeout(() => {
-                    el.classList.add('show');
-                }, 400 + (i * 700));
+                setTimeout(() => el.classList.add('show'), 400 + (i * 700));
             });
 
-            // Speak the reveal
-            setTimeout(() => {
-                speakNarration(revealNarration);
-            }, 500);
+            // Continue button
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.textContent = 'CLOSE THE CASE';
+            btn.style.cssText = 'opacity:0; transition: opacity 1s; margin-top:30px;';
+            btn.onclick = function() {
+                buildCaseClosed();
+                showPage(8);
+            };
+            container.appendChild(btn);
+
+            // Stagger the button after the lines
+            const baseDelay = 400 + (lines.length * 700);
+            setTimeout(() => btn.style.opacity = '1', baseDelay + 800);
+
+            // Narration
+            const narrationText = lines.map(l => l.text || 'It was reserved for you.').join(' ');
+            narrations[7] = narrationText;
+            setTimeout(() => speakNarration(narrationText), 500);
+        }
+
+        // ===========================
+        //  CASE CLOSED BUILDER (Page 8)
+        // ===========================
+        function buildCaseClosed() {
+            const container = document.getElementById('caseClosedContent');
+            container.innerHTML = '';
+
+            const isBrideSide = currentPerson.type === 'bridesmaid' || currentPerson.type === 'bride';
+
+            // Fixed roster order with adjectives for bride/groom
+            const rosterEntries = isBrideSide ? [
+                'Soraya - Dangerously Beautiful Bride',
+                'Erin - Maid of Honor',
+                'Emmalee - Bridesmaid',
+                'Macayla - Bridesmaid'
+            ] : [
+                'Jackson - Suspiciously Handsome Groom',
+                'Curtis - Best Man',
+                'Ryan - Groomsman',
+                'Andy - Groomsman'
+            ];
+
+            // Paragraph
+            const intro = document.createElement('p');
+            intro.className = 'reveal-line';
+            intro.textContent = 'This case was never about flowers. It was about the ones who show up, indulge the absurdity, and belong in the story. Now that the investigation is complete, one thing is clear: the right people have been found.';
+            container.appendChild(intro);
+
+            // Roster
+            const rosterDiv = document.createElement('div');
+            rosterDiv.style.cssText = 'margin-top:25px; opacity:0; transition: opacity 0.8s;';
+            rosterEntries.forEach(entry => {
+                const el = document.createElement('p');
+                el.style.cssText = 'font-family:Courier New,monospace; font-size:1.05em; color:#2a2a2a; font-weight:bold; text-transform:uppercase; letter-spacing:3px; margin-bottom:12px; line-height:1.8;';
+                el.textContent = entry;
+                rosterDiv.appendChild(el);
+            });
+            container.appendChild(rosterDiv);
+
+            // Stagger animations
+            setTimeout(() => intro.classList.add('show'), 400);
+            setTimeout(() => rosterDiv.style.opacity = '1', 1200);
+
+            // Narration
+            const narrationText = intro.textContent + ' ' + rosterEntries.join('. ') + '.';
+            narrations[8] = narrationText;
+            setTimeout(() => speakNarration(narrationText), 500);
         }
 
         // ===========================
