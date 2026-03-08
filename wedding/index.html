@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case File #2026-031</title>
+    <title>Case File #2026-103</title>
     <style>
         * {
             margin: 0;
@@ -22,37 +22,6 @@
             justify-content: center;
             padding: 60px 20px 100px;
             position: relative;
-        }
-
-        /* ===== VOLUME BANNER ===== */
-        .volume-banner {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: #8b0000;
-            color: #fff;
-            text-align: center;
-            padding: 14px 20px;
-            font-family: 'Courier New', monospace;
-            font-weight: bold;
-            font-size: 0.95em;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            z-index: 1000;
-            animation: pulseBanner 2s ease-in-out infinite;
-            transition: opacity 1s, transform 0.5s;
-        }
-
-        .volume-banner.dismissed {
-            opacity: 0;
-            transform: translateY(-100%);
-            pointer-events: none;
-        }
-
-        @keyframes pulseBanner {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
         }
 
         /* ===== CONTAINER (MANILA FOLDER) ===== */
@@ -618,51 +587,40 @@
             animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* ===== AUDIO CONTROLS ===== */
-        .audio-controls {
+        /* ===== MUSIC CONTROLS ===== */
+        .music-controls {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
             background: #111;
             border-top: 2px solid #8b0000;
-            padding: 12px 20px;
+            padding: 10px 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             z-index: 1000;
         }
 
-        .audio-btn {
+        .music-btn {
             background: none;
             border: 2px solid #555;
             color: #aaa;
-            padding: 8px 20px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.85em;
+            width: 38px;
+            height: 38px;
+            font-size: 1.1em;
             cursor: pointer;
             transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
         }
 
-        .audio-btn:hover {
+        .music-btn:hover {
             border-color: #8b0000;
             color: #fff;
-        }
-
-        .audio-btn.active {
-            border-color: #8b0000;
-            color: #8b0000;
-        }
-
-        .audio-status {
-            color: #666;
-            font-size: 0.7em;
-            font-family: 'Courier New', monospace;
-            letter-spacing: 1px;
-            text-transform: uppercase;
         }
 
         .volume-group {
@@ -719,12 +677,6 @@
             body {
                 padding: 55px 10px 85px;
                 align-items: flex-start;
-            }
-
-            .volume-banner {
-                font-size: 0.8em;
-                padding: 10px 15px;
-                letter-spacing: 2px;
             }
 
             .folder-tab {
@@ -795,19 +747,9 @@
                 letter-spacing: 1px;
             }
 
-            .audio-controls {
+            .music-controls {
                 padding: 8px 10px;
-                gap: 6px;
-            }
-
-            .audio-btn {
-                padding: 6px 12px;
-                font-size: 0.7em;
-                letter-spacing: 0px;
-            }
-
-            .audio-status {
-                display: none;
+                gap: 8px;
             }
 
             .volume-slider {
@@ -994,9 +936,6 @@
 </head>
 <body>
 
-    <!-- Volume Banner -->
-    <div class="volume-banner" id="volumeBanner">&#128266; Please Turn Up Volume &#128266;</div>
-
     <!-- Elimination Overlay -->
     <div class="elimination-overlay" id="eliminationOverlay">
         <div class="elimination-card">
@@ -1028,7 +967,7 @@
             <!-- ==================== PAGE 1: OPENING ==================== -->
             <div id="page1" class="page active">
                 <h1>MISSING</h1>
-                <p class="case-number">[ CASE FILE #2026-031 ]</p>
+                <p class="case-number">[ CASE FILE #2026-103 ]</p>
                 <div class="classified">
                     <p style="margin-bottom:0;">CLASSIFIED INVESTIGATION<br>AUTHORIZED PERSONNEL ONLY</p>
                 </div>
@@ -1137,16 +1076,16 @@
         </div>
     </div>
 
-    <!-- Audio Controls -->
-    <div class="audio-controls">
-        <button class="audio-btn" onclick="playNarration()" id="playBtn" title="Play narration">&#9654; Play</button>
-        <button class="audio-btn" onclick="pauseNarration()" id="pauseBtn" title="Pause narration">&#10074;&#10074; Pause</button>
-        <button class="audio-btn" onclick="replayNarration()" id="replayBtn" title="Replay narration">&#8635; Replay</button>
+    <!-- Background Music: "Investigations" by Kevin MacLeod (incompetech.com) - CC BY 3.0 -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="audio/background.mp3" type="audio/mpeg">
+    </audio>
+    <div class="music-controls">
+        <button class="music-btn" id="musicToggle" onclick="toggleMusic()" title="Play/Pause">&#9654;</button>
         <div class="volume-group">
             <span class="volume-icon" id="volumeIcon" onclick="toggleMute()">&#128266;</span>
-            <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="80" oninput="setVolume(this.value)">
+            <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="50" oninput="setVolume(this.value)">
         </div>
-        <span class="audio-status" id="audioStatus">NARRATION READY</span>
     </div>
 
     <script>
@@ -1161,127 +1100,41 @@
         let eliminatedNames = [];
 
         // ===========================
-        //  NARRATION TEXTS
+        //  BACKGROUND MUSIC
         // ===========================
-        const narrations = {
-            1: "It was supposed to be a normal, boho fall wedding day. Not perfect. Just uniquely october love and vibes. Flowers arranged. Guests vaguely dressed. Bride stressed enough to justify three separate panic attacks before 10 a.m. Then came the yell that shook the venue. The flowers are gone! A collective gasp fell upon the celebration reminiscent of Paul Revere's distress. Enter your name to access the case file.",
-            2: "The following individuals have been flagged as persons of interest. Review their profiles carefully. Trust no one.",
-            3: "Crimes of this nature require instability or devotion. Often both.",
-            4: "You cannot solve this without understanding the origin story. Surface-level acquaintances should reconsider continuing.",
-            5: "At this stage of the investigation, only those familiar with Soraya's habits may proceed. This includes patterns. Fixations. Minor delusions of grandeur.",
-            6: "Three suspects were eliminated. The evidence is undeniable. The bouquet did not vanish randomly. It was taken intentionally. By someone invested. Someone loyal. Someone who would absolutely lie for Soraya if necessary."
-        };
-
-        // ===========================
-        //  AUDIO SYSTEM
-        // ===========================
-        // To use your own voice recordings, add audio files to an "audio" folder
-        // and map them below. Set useAudioFiles = true when ready.
-        // File naming: page1.mp3, page2.mp3, ... page6.mp3, reveal.mp3
-        const useAudioFiles = false;
-        const audioFiles = {
-            1: 'audio/page1.mp3',
-            2: 'audio/page2.mp3',
-            3: 'audio/page3.mp3',
-            4: 'audio/page4.mp3',
-            5: 'audio/page5.mp3',
-            6: 'audio/page6.mp3',
-            reveal: 'audio/reveal.mp3'
-        };
-
-        let currentAudio = null;
-        let currentUtterance = null;
-        let currentVolume = 0.8;
+        let musicPlaying = false;
+        let currentVolume = 0.5;
         let isMuted = false;
-        let savedVolume = 0.8;
+        let savedVolume = 0.5;
 
-        function speakNarration(text, audioKey) {
-            stopNarration();
-
-            if (useAudioFiles && audioFiles[audioKey || currentPage]) {
-                // Use recorded audio file
-                currentAudio = new Audio(audioFiles[audioKey || currentPage]);
-                currentAudio.volume = isMuted ? 0 : currentVolume;
-                currentAudio.onplay = () => updateAudioStatus('PLAYING');
-                currentAudio.onended = () => updateAudioStatus('FINISHED');
-                currentAudio.onpause = () => { if (!currentAudio.ended) updateAudioStatus('PAUSED'); };
-                currentAudio.play().catch(() => updateAudioStatus('TAP PLAY'));
-            } else if ('speechSynthesis' in window) {
-                // Fallback: speech synthesis
-                currentUtterance = new SpeechSynthesisUtterance(text);
-                currentUtterance.rate = 0.88;
-                currentUtterance.pitch = 0.85;
-                currentUtterance.volume = isMuted ? 0 : currentVolume;
-
-                const voices = speechSynthesis.getVoices();
-                const preferred = voices.find(v =>
-                    v.name.includes('Daniel') ||
-                    v.name.includes('James') ||
-                    v.name.includes('Google UK English Male') ||
-                    v.lang === 'en-US'
-                );
-                if (preferred) currentUtterance.voice = preferred;
-
-                currentUtterance.onstart = () => updateAudioStatus('PLAYING');
-                currentUtterance.onend = () => updateAudioStatus('FINISHED');
-                currentUtterance.onpause = () => updateAudioStatus('PAUSED');
-                currentUtterance.onresume = () => updateAudioStatus('PLAYING');
-
-                speechSynthesis.speak(currentUtterance);
+        function toggleMusic() {
+            const music = document.getElementById('bgMusic');
+            const btn = document.getElementById('musicToggle');
+            if (music.paused) {
+                music.volume = isMuted ? 0 : currentVolume;
+                music.play().catch(() => {});
+                btn.innerHTML = '\u275A\u275A';
+                musicPlaying = true;
+            } else {
+                music.pause();
+                btn.innerHTML = '\u25B6';
+                musicPlaying = false;
             }
-        }
-
-        function stopNarration() {
-            if (currentAudio) {
-                currentAudio.pause();
-                currentAudio.currentTime = 0;
-                currentAudio = null;
-            }
-            if ('speechSynthesis' in window) {
-                speechSynthesis.cancel();
-            }
-            currentUtterance = null;
-        }
-
-        function playNarration() {
-            if (currentAudio && currentAudio.paused && currentAudio.currentTime > 0) {
-                currentAudio.play();
-            } else if ('speechSynthesis' in window && speechSynthesis.paused) {
-                speechSynthesis.resume();
-            } else if ((!currentAudio || currentAudio.ended) && !speechSynthesis.speaking) {
-                speakNarration(narrations[currentPage] || '');
-            }
-        }
-
-        function pauseNarration() {
-            if (currentAudio && !currentAudio.paused) {
-                currentAudio.pause();
-            } else if ('speechSynthesis' in window && speechSynthesis.speaking && !speechSynthesis.paused) {
-                speechSynthesis.pause();
-            }
-        }
-
-        function replayNarration() {
-            speakNarration(narrations[currentPage] || '');
         }
 
         function setVolume(val) {
             currentVolume = val / 100;
             isMuted = (currentVolume === 0);
             updateVolumeIcon();
-
-            // Apply to current audio
-            if (currentAudio) currentAudio.volume = currentVolume;
-            if (currentUtterance && 'speechSynthesis' in window) {
-                // SpeechSynthesis volume can't be changed mid-utterance,
-                // but it'll apply on next narration
-            }
+            const music = document.getElementById('bgMusic');
+            if (music) music.volume = currentVolume;
         }
 
         function toggleMute() {
+            const music = document.getElementById('bgMusic');
             if (isMuted) {
                 isMuted = false;
-                currentVolume = savedVolume || 0.8;
+                currentVolume = savedVolume || 0.5;
             } else {
                 savedVolume = currentVolume;
                 isMuted = true;
@@ -1289,23 +1142,18 @@
             }
             document.getElementById('volumeSlider').value = currentVolume * 100;
             updateVolumeIcon();
-            if (currentAudio) currentAudio.volume = currentVolume;
+            if (music) music.volume = currentVolume;
         }
 
         function updateVolumeIcon() {
             const icon = document.getElementById('volumeIcon');
             if (isMuted || currentVolume === 0) {
-                icon.innerHTML = '&#128264;'; // muted speaker
+                icon.innerHTML = '&#128264;';
             } else if (currentVolume < 0.5) {
-                icon.innerHTML = '&#128265;'; // low speaker
+                icon.innerHTML = '&#128265;';
             } else {
-                icon.innerHTML = '&#128266;'; // loud speaker
+                icon.innerHTML = '&#128266;';
             }
-        }
-
-        function updateAudioStatus(status) {
-            const el = document.getElementById('audioStatus');
-            if (el) el.textContent = status;
         }
 
         // ===========================
@@ -1371,9 +1219,6 @@
             reasonEl.textContent = suspect.reason;
             reasonEl.classList.remove('show');
 
-            // Stop narration during elimination
-            stopNarration();
-
             // Show overlay
             overlay.classList.add('active');
 
@@ -1418,12 +1263,6 @@
             page.classList.remove('hidden');
             page.classList.add('active');
             currentPage = num;
-
-            // Stop any current narration and start new one
-            stopNarration();
-            if (narrations[num]) {
-                setTimeout(() => speakNarration(narrations[num]), 600);
-            }
 
             // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1699,8 +1538,7 @@
             // Update narration and question for the correct side
             const narText5 = 'At this stage of the investigation, only those familiar with ' + bgName + '\'s habits may proceed. This includes patterns. Fixations. Minor delusions of grandeur.';
             document.getElementById('narrationDisplay5').textContent = narText5;
-            narrations[5] = narText5;
-            document.getElementById('page5Question').textContent = 'Which of these can ' + bgName + ' confidently do with zero experience?';
+            document.getElementById('page5Question').textContent
 
             const options = isBrideSide ? [
                 { text: 'A) Win an Olympic medal', correct: false },
@@ -1739,10 +1577,8 @@
             const bgName = isBrideSide ? 'Soraya' : 'Jackson';
             const narrationText = 'Three suspects were eliminated. The evidence is undeniable. The ' + item + ' did not vanish randomly. It was taken intentionally. By someone invested. Someone loyal. Someone who would absolutely lie for ' + bgName + ' if necessary.';
             document.getElementById('narrationDisplay6').textContent = narrationText;
-            document.getElementById('page6QuestionText').textContent = 'Who took the ' + item + '?';
+            document.getElementById('page6QuestionText').textContent = 'Three suspects have been eliminated. Who is left?';
             document.getElementById('page6Error').innerHTML = 'That is incorrect.<br>Please reflect on your involvement in ' + bgName + '\'s life.';
-            narrations[6] = narrationText;
-
             // Build options: A/B/C are eliminated suspects (crossed out), D is the bride/groom
             const labels = ['A', 'B', 'C'];
             eliminatedNames.forEach((name, i) => {
@@ -1848,7 +1684,7 @@
                 { text: 'After reviewing the evidence, interviewing the suspects, and observing a suspicious amount of chaos, investigators have reached the final stage of the case.', cls: 'reveal-line' },
                 { text: 'One by one, suspects were cleared. Alibis checked out. Personalities were analyzed. Slowly the list of possible culprits grew smaller. This leaves investigators with one final realization:', cls: 'reveal-line' },
                 { text: 'The ' + item + ' wasn\'t stolen.', cls: 'reveal-line', style: 'font-weight:bold; font-size:1.1em;' },
-                { html: 'It was reserved...for <span style="font-weight:bold; text-decoration:underline;">you</span>.', cls: 'reveal-line', style: 'font-weight:bold; font-size:1.1em;' },
+                { html: 'It was reserved...for <span style="font-weight:bold; text-decoration:underline;">you</span> ' + currentPerson.name.charAt(0).toUpperCase() + currentPerson.name.slice(1) + ', as ' + playerRole + '.*', cls: 'reveal-line', style: 'font-weight:bold; font-size:1.1em;' },
             ];
 
             lines.forEach((line, i) => {
@@ -1864,6 +1700,12 @@
                 setTimeout(() => el.classList.add('show'), 400 + (i * 700));
             });
 
+            // Fine print disclaimer
+            const disclaimer = document.createElement('p');
+            disclaimer.style.cssText = 'margin-top:40px; font-family:Courier New,monospace; font-size:0.55em; color:#999; line-height:1.6; opacity:0; transition: opacity 1.2s; text-align:center; max-width:500px; margin-left:auto; margin-right:auto;';
+            disclaimer.textContent = '*By reading this text, you have already committed to this role. It is non-negotiable and does hold up in most U.S. standard court proceedings. All fun is mandatory. All complaints will be ignored.';
+            container.appendChild(disclaimer);
+
             // Continue button
             const btn = document.createElement('button');
             btn.className = 'btn';
@@ -1875,14 +1717,10 @@
             };
             container.appendChild(btn);
 
-            // Stagger the button after the lines
+            // Stagger the disclaimer and button after the lines
             const baseDelay = 400 + (lines.length * 700);
-            setTimeout(() => btn.style.opacity = '1', baseDelay + 800);
-
-            // Narration
-            const narrationText = lines.map(l => l.text || 'It was reserved for you.').join(' ');
-            narrations[7] = narrationText;
-            setTimeout(() => speakNarration(narrationText), 500);
+            setTimeout(() => disclaimer.style.opacity = '1', baseDelay + 600);
+            setTimeout(() => btn.style.opacity = '1', baseDelay + 1600);
         }
 
         // ===========================
@@ -1896,7 +1734,7 @@
 
             // Fixed roster order with adjectives for bride/groom
             const rosterEntries = isBrideSide ? [
-                'Soraya - Dangerously Beautiful Bride',
+                'Soraya - Suspiciously Sexy Bride',
                 'Erin - Maid of Honor',
                 'Emmalee - Bridesmaid',
                 'Macayla - Bridesmaid'
@@ -1927,11 +1765,6 @@
             // Stagger animations
             setTimeout(() => intro.classList.add('show'), 400);
             setTimeout(() => rosterDiv.style.opacity = '1', 1200);
-
-            // Narration
-            const narrationText = intro.textContent + ' ' + rosterEntries.join('. ') + '.';
-            narrations[8] = narrationText;
-            setTimeout(() => speakNarration(narrationText), 500);
         }
 
         // ===========================
@@ -1949,23 +1782,6 @@
         // ===========================
         window.addEventListener('DOMContentLoaded', () => {
             loadPeople();
-
-            // Load voices
-            if ('speechSynthesis' in window) {
-                speechSynthesis.getVoices();
-                speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
-            }
-
-            // Auto-play narration for page 1 after short delay
-            setTimeout(() => {
-                speakNarration(narrations[1]);
-            }, 1500);
-
-            // Dismiss volume banner after 8 seconds
-            setTimeout(() => {
-                const banner = document.getElementById('volumeBanner');
-                banner.classList.add('dismissed');
-            }, 8000);
         });
     </script>
 
