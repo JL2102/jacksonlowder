@@ -1046,7 +1046,7 @@
                 <div id="page6Question">
                     <h2>The Final Suspect</h2>
                     <div class="narration-text" id="narrationDisplay6">
-                        Three suspects were eliminated. The evidence is undeniable. The bouquet did not vanish randomly. It was taken intentionally. By someone invested. Someone loyal. Someone who would absolutely lie for Soraya if necessary.
+                        Three suspects have been eliminated.
                     </div>
                     <p id="page6QuestionText" style="font-weight:bold; font-size:1.05em;"></p>
                     <div class="choices" id="page6Choices">
@@ -1442,7 +1442,8 @@
 
             if (!answer) return;
 
-            if (answer === currentPerson.psych_answer.toLowerCase()) {
+            const acceptedAnswers = currentPerson.psych_answer.toLowerCase().split('|');
+            if (acceptedAnswers.some(a => answer === a.trim())) {
                 error.classList.remove('show');
                 success.classList.add('show');
                 setTimeout(() => {
@@ -1496,7 +1497,7 @@
             if (isBrideSide) {
                 document.getElementById('page4Question').textContent = 'Soraya got a tampon stuck up her cooter within the first 24 hours of dating Jackson. What was used to extract this foreign object while she had a panic attack on a bathroom floor?';
             } else {
-                document.getElementById('page4Question').textContent = 'How long did it take Jackson to move in to Soraya\'s Apartment?';
+                document.getElementById('page4Question').textContent = 'How long did it take Jackson to move in to Soraya\'s apartment?';
             }
 
             const options = isBrideSide ? [
@@ -1575,9 +1576,8 @@
             const isBrideSide = currentPerson.type === 'bridesmaid' || currentPerson.type === 'bride';
             const item = isBrideSide ? 'bouquet' : 'boutonniere';
             const bgName = isBrideSide ? 'Soraya' : 'Jackson';
-            const narrationText = 'Three suspects were eliminated. The evidence is undeniable. The ' + item + ' did not vanish randomly. It was taken intentionally. By someone invested. Someone loyal. Someone who would absolutely lie for ' + bgName + ' if necessary.';
-            document.getElementById('narrationDisplay6').textContent = narrationText;
-            document.getElementById('page6QuestionText').textContent = 'Three suspects have been eliminated. Who is left?';
+            document.getElementById('narrationDisplay6').textContent = 'Three suspects have been eliminated.';
+            document.getElementById('page6QuestionText').textContent = 'Who stole the ' + item + '?';
             document.getElementById('page6Error').innerHTML = 'That is incorrect.<br>Please reflect on your involvement in ' + bgName + '\'s life.';
             // Build options: A/B/C are eliminated suspects (crossed out), D is the bride/groom
             const labels = ['A', 'B', 'C'];
