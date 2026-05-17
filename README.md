@@ -156,7 +156,7 @@ The publicly hosted resume (`Jackson Lowder Resume 2026.pdf`) had personal conta
 import fitz
 doc = fitz.open("Jackson Lowder Resume 2026.pdf")
 for page in doc:
-    for text in ["(312) 659-4628", "Jacksonlowder2102@gmail.com"]:
+    for text in 
         for inst in page.search_for(text):
             page.add_redact_annot(inst, fill=(1, 1, 1))
     page.apply_redactions()
