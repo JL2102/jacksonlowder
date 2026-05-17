@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BEZNext Query Performance Dashboard — A Django web app for analyzing query performance across Snowflake, Teradata, and Oracle. Built by Jackson Lowder.">
+  <title>BEZNext Dashboard | Jackson Lowder</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="project-detail-page">
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-logo"><span>JL</span></a>
+      <ul class="navbar-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="Jackson%20Lowder%20Resume%202026.pdf" target="_blank" rel="noopener" class="navbar-resume">Resume</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="project-hero">
+    <div class="project-hero-inner">
+      <a href="index.html#projects" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        Back to Projects
+      </a>
+      <p class="section-label">Software Engineer Internship &#8212; BEZNext</p>
+      <h1 class="project-hero-title">Query Performance Dashboard</h1>
+      <p class="project-hero-subtitle">A full-stack Django web application built to support database performance tuning workflows. Connects to Snowflake, Teradata, and Oracle simultaneously &#8212; surfacing query execution history, compute metrics, and statistical analysis across multiple enterprise data warehouse platforms.</p>
+      <div class="project-hero-tags">
+        <span class="project-tag">Django</span>
+        <span class="project-tag">Python</span>
+        <span class="project-tag">Snowflake</span>
+        <span class="project-tag">Teradata</span>
+        <span class="project-tag">Oracle</span>
+        <span class="project-tag">pandas</span>
+        <span class="project-tag">SQL</span>
+        <span class="project-tag">Full Stack</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== OVERVIEW CARDS ===== -->
+  <section class="project-overview">
+    <div class="project-overview-inner">
+      <p class="section-label">What it does</p>
+      <h2 class="section-title">Built for enterprise database tuning</h2>
+      <div class="overview-grid">
+        <div class="overview-card">
+          <div class="overview-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <h4>Multi-Database Connectivity</h4>
+          <p>Connects simultaneously to Snowflake, Teradata, and Oracle using dedicated Python connectors &#8212; each with independent connection configuration and error handling.</p>
+        </div>
+        <div class="overview-card">
+          <div class="overview-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h4>Query Performance Analysis</h4>
+          <p>Surfaces execution history with metrics like elapsed time, CPU time, bytes scanned, logical/physical I/O, compile time, and spill-to-storage &#8212; per platform.</p>
+        </div>
+        <div class="overview-card">
+          <div class="overview-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <h4>Statistical Metrics</h4>
+          <p>For both the full result set and the filtered selection, calculates subtotal, average, and standard deviation &#8212; giving engineers a statistical view of workload variability.</p>
+        </div>
+        <div class="overview-card">
+          <div class="overview-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <h4>Oracle Workload Integration</h4>
+          <p>Queries the BEZNext Oracle workload management system to look up system names, ruleset names, AppIDs, and usernames &#8212; enabling precise Teradata workload filtering.</p>
+        </div>
+        <div class="overview-card">
+          <div class="overview-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+          </div>
+          <h4>Query Filtering &amp; Controls</h4>
+          <p>Date range pickers, warehouse/system/ruleset dropdowns, sort column selector, and result count limiter &#8212; each dynamically populated from live database metadata.</p>
+        </div>
+        <div class="overview-card">
+          <div class="overview-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <h4>Query Text Popup</h4>
+          <p>Click any Query ID in the results table to fire an AJAX request that fetches and displays the full SQL text for that query live from the source database.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREENSHOT 1: SNOWFLAKE ===== -->
+  <section class="project-section">
+    <div class="project-section-inner">
+      <div class="screenshot-frame">
+        <img src="images/BEZNext_API/BEZNext%20SnowFlake%20API.png" alt="BEZNext Snowflake Query Interface">
+      </div>
+      <div>
+        <p class="feature-label">Snowflake</p>
+        <h3 class="feature-title">Query history analysis across Snowflake warehouses</h3>
+        <p class="feature-desc">The Snowflake tab queries <code style="font-family:var(--font-mono);font-size:0.85em;color:var(--accent)">ACCOUNT_USAGE.QUERY_HISTORY</code> to pull execution data filtered by date range, warehouse name, and result limit. Results are processed into a pandas DataFrame before statistics are computed and rendered.</p>
+        <ul class="feature-bullets">
+          <li>Filter by start/end datetime and warehouse name</li>
+          <li>Sort by Scanned MB, elapsed time, compile time, execution time, or network usage</li>
+          <li>Results table shows Selected Queries and All Queries blocks with subtotal, average, and standard deviation rows</li>
+          <li>Click any Query ID to fetch and view the full SQL in a popup</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREENSHOT 2: TERADATA ===== -->
+  <section class="project-section">
+    <div class="project-section-inner reverse">
+      <div class="screenshot-frame">
+        <img src="images/BEZNext_API/BEZNext%20Terradata%20API.png" alt="BEZNext Teradata Query Interface">
+      </div>
+      <div>
+        <p class="feature-label">Teradata</p>
+        <h3 class="feature-title">Workload-filtered Teradata query analysis</h3>
+        <p class="feature-desc">The Teradata tab adds an Oracle-backed workload layer: the app first queries the BEZNext Oracle system to identify the AppIDs and Usernames active during the selected window, then uses those to filter <code style="font-family:var(--font-mono);font-size:0.85em;color:var(--accent)">DBQLOGTBL_HST_V</code> for matching queries.</p>
+        <ul class="feature-bullets">
+          <li>System Name and Ruleset Name dropdowns populated live from Oracle workload metadata</li>
+          <li>Sort by Total CPU Time, logical/physical I/O (MB), or response time</li>
+          <li>Results table shows Response Time, logicalIOsMB, and totalCpuTime across selected and all query sets</li>
+          <li>Rotating log files track Teradata, Oracle, and server activity separately</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="project-overview" style="background:var(--bg-surface);border-top:1px solid var(--border);">
+    <div class="project-overview-inner">
+      <p class="section-label">Workflow</p>
+      <h2 class="section-title">How a query runs end to end</h2>
+      <div class="overview-grid" style="grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));">
+        <div class="overview-card">
+          <div class="overview-card-icon" style="font-family:var(--font-mono);font-size:1.25rem;font-weight:700;color:var(--accent);">01</div>
+          <h4>User submits the form</h4>
+          <p>Selects date range, platform (Snowflake or Teradata), warehouse or system/ruleset, sort column, and result limit.</p>
+        </div>
+        <div class="overview-card">
+          <div class="overview-card-icon" style="font-family:var(--font-mono);font-size:1.25rem;font-weight:700;color:var(--accent);">02</div>
+          <h4>Oracle pre-query (Teradata only)</h4>
+          <p>For Teradata, the app queries Oracle's <code style="font-family:var(--font-mono);font-size:0.8em">model_session_metrics</code> to find active AppIDs and Usernames in the time window.</p>
+        </div>
+        <div class="overview-card">
+          <div class="overview-card-icon" style="font-family:var(--font-mono);font-size:1.25rem;font-weight:700;color:var(--accent);">03</div>
+          <h4>Database query execution</h4>
+          <p>The parameterized SQL query runs against Snowflake or Teradata with the user's filters applied, returning raw execution records.</p>
+        </div>
+        <div class="overview-card">
+          <div class="overview-card-icon" style="font-family:var(--font-mono);font-size:1.25rem;font-weight:700;color:var(--accent);">04</div>
+          <h4>pandas processing</h4>
+          <p>Results are loaded into a pandas DataFrame. Subtotals, averages, and standard deviations are computed across the full set and the selected subset.</p>
+        </div>
+        <div class="overview-card">
+          <div class="overview-card-icon" style="font-family:var(--font-mono);font-size:1.25rem;font-weight:700;color:var(--accent);">05</div>
+          <h4>HTML table render</h4>
+          <p>The processed DataFrame is rendered into an HTML response with clickable Query IDs that trigger AJAX calls for full SQL text retrieval.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TECH STACK ===== -->
+  <section class="tech-stack-section">
+    <div class="tech-stack-inner">
+      <p class="section-label">Technology</p>
+      <h2 class="section-title">How it's built</h2>
+      <div class="section-divider"></div>
+      <div class="skills-groups">
+        <div>
+          <p class="skill-group-label">Backend</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Python 3.11</span>
+            <span class="skill-tag">Django 3.2</span>
+            <span class="skill-tag">pandas</span>
+          </div>
+        </div>
+        <div>
+          <p class="skill-group-label">Databases</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Snowflake</span>
+            <span class="skill-tag">Teradata</span>
+            <span class="skill-tag">Oracle</span>
+            <span class="skill-tag">snowflake-connector-python</span>
+            <span class="skill-tag">teradatasql</span>
+            <span class="skill-tag">cx_Oracle</span>
+          </div>
+        </div>
+        <div>
+          <p class="skill-group-label">Frontend</p>
+          <div class="skill-tags">
+            <span class="skill-tag">HTML / CSS</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">AJAX</span>
+            <span class="skill-tag">Django Templates</span>
+          </div>
+        </div>
+        <div>
+          <p class="skill-group-label">Ops</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Rotating File Logging</span>
+            <span class="skill-tag">django-debug-toolbar</span>
+            <span class="skill-tag">Virtual Environment</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BACK LINK ===== -->
+  <section class="project-back-section">
+    <a href="index.html#projects" class="btn btn-outline">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Back to All Projects
+    </a>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>Designed &amp; built by <a href="https://github.com/JL2102" target="_blank" rel="noopener">Jackson Lowder</a> &middot; <a href="index.html">jacksonlowder.com</a></p>
+  </footer>
+
+</body>
+</html>

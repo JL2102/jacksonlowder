@@ -1,54 +1,189 @@
-<!-- MetaDataRemover.html -->
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Metadata Remover | Jackson Lowder</title>
-
-    <link href="css/terminaltheme.css" rel="stylesheet">
-    <link href="css/Project_metadata.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link rel="icon" href="images/JL_New_Logo_Trans.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metadata Remover | Jackson Lowder</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .tool-page {
+      min-height: 100vh;
+      padding: 100px 24px 80px;
+    }
+    .tool-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .tool-container .section-divider {
+      margin-bottom: 40px;
+    }
+    .upload-area {
+      border: 2px dashed var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px 24px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color var(--transition), background var(--transition);
+      background: var(--bg-surface);
+      margin-bottom: 24px;
+    }
+    .upload-area:hover, .upload-area.drag-over {
+      border-color: var(--accent);
+      background: rgba(88, 166, 255, 0.04);
+    }
+    .upload-icon {
+      margin: 0 auto 16px;
+      color: var(--accent);
+    }
+    .upload-area p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 8px;
+    }
+    .upload-area strong {
+      color: var(--text);
+    }
+    #fileInput { display: none; }
+    .result-area {
+      display: none;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      text-align: center;
+    }
+    .result-area.visible { display: block; }
+    .result-area img {
+      max-width: 100%;
+      max-height: 300px;
+      border-radius: var(--radius);
+      margin: 0 auto 20px;
+      border: 1px solid var(--border);
+    }
+    .result-filename {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      margin-bottom: 20px;
+    }
+    .tool-note {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+  </style>
 </head>
-
 <body>
 
-    <nav class="navbar navbar-default">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="index.html">~ jackson $</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li><a href="Profile.html">Profile</a></li>
-                <li><a href="Projects.html">Projects</a></li>
-                <li><a href="Contacts.html">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-logo"><span>JL</span></a>
+      <ul class="navbar-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="resume2.pdf" target="_blank" rel="noopener" class="navbar-resume">Resume</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <section class="terminal-section">
-        <div class="container">
-            <h2>Metadata Remover</h2>
-            <div class="metadata-upload-container">
-                <label for="imageUpload" class="btn-primary">Upload Image</label>
-                <input type="file" id="imageUpload" accept="image/*" style="display: none;">
-            </div>
-            <div class="metadata-download-container" style="display: none;">
-                <p>Metadata removed! Download the image below:</p>
-                <a href="#" class="btn-primary" id="downloadLink">Download Image</a>
-            </div>
-        </div>
-    </section>
+  <main class="tool-page">
+    <div class="tool-container">
+      <p class="section-label">Tool</p>
+      <h1 class="section-title">Metadata Remover</h1>
+      <div class="section-divider"></div>
+      <p style="color:var(--text-muted);font-size:0.9375rem;margin-bottom:28px;line-height:1.7">
+        Upload an image to strip all EXIF metadata (location, camera info, timestamps, etc.) entirely in your browser. Nothing is uploaded to a server.
+      </p>
 
-    <script src="js/jquery-1.11.3.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/custom.js"></script>
+      <!-- Upload Area -->
+      <div class="upload-area" id="uploadArea">
+        <svg class="upload-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <strong>Click to upload</strong> or drag and drop
+        <p>PNG, JPG, WEBP, GIF supported</p>
+        <input type="file" id="fileInput" accept="image/*">
+      </div>
 
+      <!-- Result -->
+      <div class="result-area" id="resultArea">
+        <img id="previewImg" src="" alt="Processed image preview">
+        <p class="result-filename" id="resultFilename"></p>
+        <a id="downloadLink" href="#" class="btn btn-primary" download>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Clean Image
+        </a>
+      </div>
+
+      <p class="tool-note">All processing happens client-side using the HTML5 Canvas API. Your images are never sent anywhere.</p>
+    </div>
+  </main>
+
+  <script>
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInput  = document.getElementById('fileInput');
+    const resultArea = document.getElementById('resultArea');
+    const previewImg = document.getElementById('previewImg');
+    const downloadLink = document.getElementById('downloadLink');
+    const resultFilename = document.getElementById('resultFilename');
+
+    uploadArea.addEventListener('click', () => fileInput.click());
+
+    uploadArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadArea.classList.add('drag-over');
+    });
+    uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('drag-over'));
+    uploadArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadArea.classList.remove('drag-over');
+      const file = e.dataTransfer.files[0];
+      if (file && file.type.startsWith('image/')) processImage(file);
+    });
+
+    fileInput.addEventListener('change', () => {
+      if (fileInput.files[0]) processImage(fileInput.files[0]);
+    });
+
+    function processImage(file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => {
+          // Draw to canvas — this strips all metadata
+          const canvas = document.createElement('canvas');
+          canvas.width  = img.naturalWidth;
+          canvas.height = img.naturalHeight;
+          canvas.getContext('2d').drawImage(img, 0, 0);
+
+          // Determine output type (preserve PNG, default to JPEG for others)
+          const isPng = file.type === 'image/png';
+          const mimeType = isPng ? 'image/png' : 'image/jpeg';
+          const ext = isPng ? 'png' : 'jpg';
+          const baseName = file.name.replace(/\.[^.]+$/, '');
+          const outName = `${baseName}_clean.${ext}`;
+
+          canvas.toBlob((blob) => {
+            const url = URL.createObjectURL(blob);
+            previewImg.src = url;
+            downloadLink.href = url;
+            downloadLink.download = outName;
+            resultFilename.textContent = outName;
+            resultArea.classList.add('visible');
+            resultArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }, mimeType, 0.95);
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  </script>
 </body>
 </html>

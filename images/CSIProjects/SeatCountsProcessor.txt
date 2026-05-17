@@ -1,0 +1,105 @@
+# WARP.md
+
+This file provides guidance to WARP (warp.dev) when working with code in SeatCounts_V2.
+
+## Project Overview
+
+SeatCounts_V2 is a dark-themed tkinter desktop app (Windows) that processes CSI seat count data from Excel into formatted, per-quarter output files and drafts Outlook emails with the results attached. It replaces a manual workflow of copying data, splitting by program type, formatting, and emailing.
+
+## Files
+
+- `app.py` — Main GUI application (tkinter). Handles file input (paste/browse), processing orchestration, clipboard copy, and Outlook integration via `win32com`.
+- `Main.py` — Core processing logic. Reads an Excel input, splits rows by InternalComments into Career/Skill Building/Language sheets, formats the output workbook, and generates email content.
+- `settings.py` — Modal settings window. Edits quarter configuration (enabled, email mode, term ID, dates, programs, additional programs) and persists to `config.json`.
+- `config.json` — All quarter configuration. See the `_readme` key inside it for field-level documentation.
+- `SeatCountsInput.xlsx` — Default input file (used by `Main.py` standalone mode).
+- `Email Template` — Legacy plain-text email template updated by `Main.py` standalone mode.
+- `executable/` — Packaged build output.
+- `_Past Counts/` — Historical output files.
+
+## Running
+
+```powershell
+# GUI mode (primary usage)
+python app.py
+
+# Standalone CLI mode (processes SeatCountsInput.xlsx directly)
+python Main.py
+```
+
+Requires: `pandas`, `openpyxl`, `pywin32` (for clipboard and Outlook features).
+
+## Code Architecture
+
+### Data Flow
+
+1. User pastes or browses an Excel file (per-quarter or combined "All Quarters" input)
+2. If combined input is used, `_split_combined_input()` groups rows by `TermID` column and writes a temp xlsx per quarter
+3. Per-quarter individual inputs take priority over combined splits
+4. `process_seat_counts()` in `Main.py` processes each quarter's file:
+   - Drops TeacherID2/3/4 columns
+   - Formats StartDate/EndDate as M/D/YYYY strings
+   - Splits rows into Career Programs / Skill Building / Language sheets by InternalComments codes
+   - Sorts by CampusID, InternalComments, CourseID, SectionID
+   - Writes styled Excel output with frozen header, gray header fill, auto-width columns
+   - Forces `General` number format on all cells; `ClassID`, `ClassSize`, `SeatAvail` get format `'0'` (no commas) with values cast to int
+5. Output files are copied to Windows clipboard (CF_HDROP) for paste-as-attachment
+6. Email subject/body are generated and can be opened as an Outlook draft
+
+### InternalComments Code Mapping
+
+Defined as constants in `Main.py`:
+- **Career Programs**: BCF, BCF-X, BCM, BCM-X, BCP-X, BDM, BDM-X, BFN, BFN-X, BHL, BHL-X, BOA, BOA-X, HCP, HCP-X, NCW, NCW-X, NCP, NCP-X
+- **Skill Building**: CSS, CSS-X
+- **Language**: ADV, AEP, BGN, BGN-X, INT, COM
+
+### Expected Input Columns
+
+Defined as `EXPECTED_COLUMNS` in `Main.py` (23 columns):
+CampusID, TermID, CourseID, SectionID, ClassID, CourseDescription, TeacherID, TeacherID2, TeacherID3, TeacherID4, StartDate, EndDate, TimeSlots, Comments, InternalComments, ClassSize, Official, PreReg, BusWait, RecWait, Enrollment, SeatAvail, Modality
+
+Validation runs on paste/browse and warns on missing or unexpected columns.
+
+### TermID Auto-Split
+
+The "All:" input row at the top of Section 1 accepts a combined dataset containing multiple quarters. When processed, the app splits it by the `TermID` column using the `term_id` field configured per quarter in `config.json`.
+
+TermID format: `T{YY}{letter}{QuarterName}` where letter is A=Winter, B=Spring, C=Summer, D=Fall. Example: `T26CSummer` = Summer 2026. These must be updated in Settings each academic year.
+
+### Numeric Column Handling
+
+`ClassID`, `ClassSize`, and `SeatAvail` get special treatment in two places:
+- **On clipboard paste** (`app.py`): commas are stripped and values are converted to numeric via `pd.to_numeric()` before writing to the temp xlsx
+- **On output styling** (`Main.py`): cell values are cast to `int` and number format is set to `'0'` to prevent Excel comma grouping
+
+### config.json Structure
+
+Each quarter object has:
+- `name` — display name and output filename prefix
+- `enabled` — whether it appears in the main UI
+- `email_mode` — `"combined"` | `"individual"` | `"none"`
+- `term_id` — TermID string for auto-split matching
+- `start_date` / `end_date` — reference only, not used in processing
+- `programs` — `{career, skill_building, language}` booleans controlling output sheets
+- `additional_programs` — list of InternalComments codes to force-include even when their program toggle is off
+
+### Settings Window Layout (per quarter)
+
+Row 1: Enabled checkbox + Email mode dropdown
+Row 2: TermID entry
+Row 3: Start date + End date entries
+Row 4: Programs checkboxes (Career, Skill Building, Language)
+Row 5: Additional programs entry (comma-separated codes)
+
+### UI Theme
+
+Dark mode palette defined in both `app.py` and `settings.py`:
+- BG: `#1e1e1e`, BG_LIGHT: `#2d2d2d`, FG: `#e0e0e0`, FG_DIM: `#888888`, ACCENT: `#4CAF50`, BORDER: `#3c3c3c`
+
+## Key Behaviors to Preserve
+
+- Ctrl+V global shortcut pastes into the first empty per-quarter slot (not the combined row)
+- `_reload_config()` preserves already-loaded file paths across settings changes
+- Output files are auto-named: `{Season} Seat Counts {M.D.YYYY}.xlsx`
+- Email is sent to `seatcounts@csinow.edu` with HTML signature
+- `Main.py` standalone mode also updates the legacy `Email Template` file on disk

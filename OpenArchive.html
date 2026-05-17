@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Open Archive — A Django-based student document management system built by Jackson Lowder.">
+  <title>Open Archive | Jackson Lowder</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="project-detail-page">
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-logo"><span>JL</span></a>
+      <ul class="navbar-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="Jackson%20Lowder%20Resume%202026.pdf" target="_blank" rel="noopener" class="navbar-resume">Resume</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="project-hero">
+    <div class="project-hero-inner">
+      <a href="index.html#projects" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        Back to Projects
+      </a>
+      <p class="section-label">Full-Stack Web Application</p>
+      <h1 class="project-hero-title">Open Archive</h1>
+      <p class="project-hero-subtitle">A comprehensive Django-based document management system built for educational institutions to manage student records, files, and program tracking &#8212; with role-based access control, automated backups, external database sync, and a fully customizable interface.</p>
+      <div class="project-hero-tags">
+        <span class="project-tag">Django</span>
+        <span class="project-tag">Python</span>
+        <span class="project-tag">SQL</span>
+        <span class="project-tag">PostgreSQL</span>
+        <span class="project-tag">SQLite</span>
+        <span class="project-tag">HTML / CSS / JS</span>
+        <span class="project-tag">Full Stack</span>
+        <span class="project-tag">AI Document Classification</span>
+        <span class="project-tag">FERPA Compliant</span>
+      </div>
+
+      <!-- Fake Data Disclaimer -->
+      <div class="disclaimer-banner">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <p><strong>Notice:</strong> All student names, IDs, contact information, and academic records shown in the screenshots below are entirely fictional and generated for demonstration purposes only. No real student data is present anywhere in this showcase.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== OVERVIEW CARDS ===== -->
+  <section class="project-overview">
+    <div class="project-overview-inner">
+      <p class="section-label">What it does</p>
+      <h2 class="section-title">Built for real institutional workflows</h2>
+      <div class="overview-grid">
+        <div class="overview-card">
+          <div class="overview-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <h4>Document Management</h4>
+          <p>Upload, organize, and search student documents with automated naming, versioning, and folder structure organized by student and term.</p>
+        </div>
+        <div class="overview-card">
+          <div class="overview-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h4>Student &amp; Program Tracking</h4>
+          <p>Full student record management with multi-program support, flexible term structures, and automatic student-term assignment tracking.</p>
+        </div>
+        <div class="overview-card">
+          <div class="overview-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <h4>Role-Based Access Control</h4>
+          <p>Granular permissions for Admin, Supervisor, and Staff roles. Full audit logging of every user action for compliance and accountability.</p>
+        </div>
+        <div class="overview-card">
+          <div class="overview-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+          </div>
+          <h4>External Data Sync</h4>
+          <p>Connect to external SQLite, PostgreSQL, or MySQL databases to synchronize student, program, and term data with configurable update modes and dry-run testing.</p>
+        </div>
+        <div class="overview-card">
+          <div class="overview-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <h4>Automated Backups</h4>
+          <p>Scheduled daily backups of database and media files with configurable retention policies, integrity verification, and one-click restore.</p>
+        </div>
+        <div class="overview-card">
+          <div class="overview-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-1H1a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/></svg>
+          </div>
+          <h4>AI Document Classification</h4>
+          <p>A custom two-mode AI system automatically detects document types on upload using filename pattern-matching and content analysis, with confidence scores and batch auto-categorization.</p>
+        </div>
+        <div class="overview-card">
+          <div class="overview-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+          </div>
+          <h4>Theme Customizer</h4>
+          <p>Multiple built-in light and dark theme presets (Default, Ocean, Forest, Sunset, Lavender) with support for custom themes &#8212; configurable per institution.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREENSHOT 1: DASHBOARD ===== -->
+  <section class="project-section">
+    <div class="project-section-inner">
+      <div class="screenshot-frame">
+        <img src="images/OpenArchive/OpenArchive%20Main%20Screen.png" alt="Open Archive Dashboard">
+      </div>
+      <div>
+        <p class="feature-label">Dashboard</p>
+        <h3 class="feature-title">At-a-glance system overview</h3>
+        <p class="feature-desc">The main dashboard surfaces the most important system metrics in one place. Staff can immediately see total students, file counts, active document types, and storage usage &#8212; all updated in real time.</p>
+        <ul class="feature-bullets">
+          <li>Live stats for students, files, document types, and storage</li>
+          <li>Quick Action shortcuts for the most common daily tasks</li>
+          <li>Recent Activity feed showing the latest file uploads and record changes</li>
+          <li>System Status panel showing backup state, scheduled tasks, and storage health</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREENSHOT 2: STUDENTS ===== -->
+  <section class="project-section">
+    <div class="project-section-inner reverse">
+      <div class="screenshot-frame">
+        <img src="images/OpenArchive/OpenArchive%20Students%20Screen.png" alt="Open Archive Students Screen">
+      </div>
+      <div>
+        <p class="feature-label">Students</p>
+        <h3 class="feature-title">Complete student record management</h3>
+        <p class="feature-desc">The Students screen provides a full searchable, filterable roster of all enrolled students. Each row shows the student's unique ID, name, contact info, active programs, and term counts.</p>
+        <ul class="feature-bullets">
+          <li>Search by ID, name, or email with instant results</li>
+          <li>Filter by program or enrollment status</li>
+          <li>One-click access to any student's full file and record history</li>
+          <li>Bulk upload entry point for adding documents across multiple students</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREENSHOT 3: STUDENT FILES FOLDER VIEW ===== -->
+  <section class="project-section">
+    <div class="project-section-inner">
+      <div class="screenshot-frame">
+        <img src="images/OpenArchive/OpenArchive%20Student%20Files%20Screen.png" alt="Open Archive Student Files Folder View">
+      </div>
+      <div>
+        <p class="feature-label">Student Files &#8212; Folder View</p>
+        <h3 class="feature-title">Hierarchical file organization by student and term</h3>
+        <p class="feature-desc">Documents are organized in a collapsible tree: student &#8594; term &#8594; files. Staff can drag and drop files directly into the correct student-term bucket, with automated conflict-safe file naming applied on upload.</p>
+        <ul class="feature-bullets">
+          <li>Expand / Collapse All for quick navigation across many students</li>
+          <li>Drag-and-drop upload zone per student record</li>
+          <li>Filter by document type, term, or student simultaneously</li>
+          <li>Automated file naming convention applied on every upload</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREENSHOT 4: FILES LIST VIEW ===== -->
+  <section class="project-section">
+    <div class="project-section-inner reverse">
+      <div class="screenshot-frame">
+        <img src="images/OpenArchive/OpenArchive%20Files%20List%20View.png" alt="Open Archive Files List View">
+      </div>
+      <div>
+        <p class="feature-label">Student Files &#8212; List View</p>
+        <h3 class="feature-title">Full flat-table view of every document in the system</h3>
+        <p class="feature-desc">The list view exposes the complete data model &#8212; every file in the system shown as a flat, sortable table with student, term, document type, filename, revision number, program ID, creation date, and document modified date all visible at once.</p>
+        <ul class="feature-bullets">
+          <li>Revision tracking on every file with full version history</li>
+          <li>Program ID column for cross-referencing academic programs</li>
+          <li>Color-coded document type labels for fast visual scanning</li>
+          <li>Comment field per document for staff annotations</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREENSHOT 5: BULK UPLOAD ===== -->
+  <section class="project-section">
+    <div class="project-section-inner">
+      <div class="screenshot-frame">
+        <img src="images/OpenArchive/OpenArchive%20Bulk%20Upload.png" alt="Open Archive Bulk Upload">
+      </div>
+      <div>
+        <p class="feature-label">Bulk Upload</p>
+        <h3 class="feature-title">Batch-process up to 30 files in a single operation</h3>
+        <p class="feature-desc">The Bulk Upload workflow lets staff select a student and academic term, then upload up to 30 documents in one pass. The system handles naming, categorization, and organization automatically after submission.</p>
+        <ul class="feature-bullets">
+          <li>Student and term selection with validation before upload</li>
+          <li>Supports PDF, DOC, DOCX, JPG, JPEG, PNG, GIF, TXT</li>
+          <li>Upload &amp; Add Another and Upload &amp; Continue Editing modes for high-volume workflows</li>
+          <li>File drop zone with click-to-browse fallback</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREENSHOT 5b: AI DOCUMENT ANALYSIS ===== -->
+  <section class="project-section">
+    <div class="project-section-inner reverse">
+      <div class="screenshot-frame">
+        <img src="images/OpenArchive/Open%20Archive%20AI%20Data.png" alt="Open Archive AI Document Type Assignment">
+      </div>
+      <div>
+        <p class="feature-label">AI Document Analysis</p>
+        <h3 class="feature-title">Intelligent auto-classification on every upload</h3>
+        <p class="feature-desc">Open Archive includes a custom AI analysis system that learns from uploaded filenames and file content to automatically detect and assign the correct document type &#8212; distinguishing between a Passport, Visa, acceptance letter, enrollment agreement, transcript, and more without staff intervention.</p>
+        <ul class="feature-bullets">
+          <li><strong style="color:var(--text)">Quick Analyze</strong> &#8212; pattern-matches against the filename and known naming conventions to suggest a document type instantly, displaying a confidence percentage</li>
+          <li><strong style="color:var(--text)">Deep Analyze fallback</strong> &#8212; when filename analysis is inconclusive, the system reads file content to make a classification decision</li>
+          <li><strong style="color:var(--text)">Auto-Categorize All Files</strong> &#8212; one-click batch classification across every file in a bulk upload session</li>
+          <li>Auto-escalation flags files where confidence is below threshold, prompting staff review before submission</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREENSHOT 6: SYSTEM LOG ===== -->
+  <section class="project-section">
+    <div class="project-section-inner">
+      <div class="screenshot-frame">
+        <img src="images/OpenArchive/OpenArchive%20System%20Log.png" alt="Open Archive System Activity Log">
+      </div>
+      <div>
+        <p class="feature-label">System Activity Log</p>
+        <h3 class="feature-title">Complete audit trail of every action in the system</h3>
+        <p class="feature-desc">Every create, update, and delete is recorded in a chronological activity timeline. The log is searchable by object name, action type, user, and content type &#8212; providing the full accountability trail required for FERPA compliance.</p>
+        <ul class="feature-bullets">
+          <li>Color-coded diff output showing exact field-level changes</li>
+          <li>Filter by action type, user, and content type simultaneously</li>
+          <li>Timeline and table view modes for different audit scenarios</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREENSHOT 7: TASK MANAGEMENT ===== -->
+  <section class="project-section">
+    <div class="project-section-inner reverse">
+      <div class="screenshot-frame">
+        <img src="images/OpenArchive/OpenArchive%20Task%20Management.png" alt="Open Archive Task Management">
+      </div>
+      <div>
+        <p class="feature-label">Task Management</p>
+        <h3 class="feature-title">Centralized scheduling for all automated operations</h3>
+        <p class="feature-desc">The Task Management screen provides a unified interface for configuring and monitoring every automated operation &#8212; backups, external data synchronization, and custom tasks &#8212; all from one place without touching the server.</p>
+        <ul class="feature-bullets">
+          <li>Per-task schedule configuration with time and retention settings</li>
+          <li>Test Run mode for safely validating task configuration before enabling</li>
+          <li>Force Run to execute a task immediately regardless of schedule</li>
+          <li>Active / Disabled toggle and full execution history per task</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREENSHOT 8: THEME CUSTOMIZER ===== -->
+  <section class="project-section">
+    <div class="project-section-inner">
+      <div class="screenshot-frame" style="max-width:320px;margin:0 auto;">
+        <img src="images/OpenArchive/OpenArchive%20Theme%20Customizer.png" alt="Open Archive Theme Customizer">
+      </div>
+      <div>
+        <p class="feature-label">Theme Customizer</p>
+        <h3 class="feature-title">Institutional branding out of the box</h3>
+        <p class="feature-desc">Open Archive ships with a full theme system. Users can switch between curated light and dark presets &#8212; Default, Ocean, Forest, Sunset, Lavender &#8212; or build fully custom themes to match an institution's brand colors. Saved themes persist per user.</p>
+        <ul class="feature-bullets">
+          <li>5+ built-in light and dark preset themes</li>
+          <li>Custom theme builder with full color control</li>
+          <li>Themes saved and persisted per user account</li>
+          <li>Configurable labels and field names for institutional branding</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TECH STACK ===== -->
+  <section class="tech-stack-section">
+    <div class="tech-stack-inner">
+      <p class="section-label">Technology</p>
+      <h2 class="section-title">How it's built</h2>
+      <div class="section-divider"></div>
+      <div class="skills-groups">
+        <div>
+          <p class="skill-group-label">Backend</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Django 4.x</span>
+            <span class="skill-tag">Django ORM</span>
+            <span class="skill-tag">Management Commands</span>
+          </div>
+        </div>
+        <div>
+          <p class="skill-group-label">Database</p>
+          <div class="skill-tags">
+            <span class="skill-tag">SQLite</span>
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">External DB Sync</span>
+          </div>
+        </div>
+        <div>
+          <p class="skill-group-label">Frontend</p>
+          <div class="skill-tags">
+            <span class="skill-tag">HTML / CSS</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">Django Templates</span>
+            <span class="skill-tag">Custom Admin UI</span>
+          </div>
+        </div>
+        <div>
+          <p class="skill-group-label">AI &amp; Analysis</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Filename Pattern Matching</span>
+            <span class="skill-tag">Content Analysis</span>
+            <span class="skill-tag">Confidence Scoring</span>
+            <span class="skill-tag">Auto-Classification</span>
+          </div>
+        </div>
+        <div>
+          <p class="skill-group-label">Security &amp; Ops</p>
+          <div class="skill-tags">
+            <span class="skill-tag">RBAC</span>
+            <span class="skill-tag">CSRF Protection</span>
+            <span class="skill-tag">Audit Logging</span>
+            <span class="skill-tag">Automated Backups</span>
+            <span class="skill-tag">FERPA Compliance</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BACK LINK ===== -->
+  <section class="project-back-section">
+    <a href="index.html#projects" class="btn btn-outline">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Back to All Projects
+    </a>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>Designed &amp; built by <a href="https://github.com/JL2102" target="_blank" rel="noopener">Jackson Lowder</a> &middot; <a href="index.html">jacksonlowder.com</a></p>
+  </footer>
+
+</body>
+</html>
