@@ -66,21 +66,3 @@ document.querySelectorAll('.desc-toggle').forEach(btn => {
   });
 });
 
-// ========================
-// Click-to-Copy Email
-// ========================
-const copyEmailBtn = document.getElementById('copyEmail');
-const copyToast = document.getElementById('copyToast');
-let toastTimeout;
-
-copyEmailBtn.addEventListener('click', () => {
-  navigator.clipboard.writeText('Contact@jacksonlowder.com')
-    .then(() => {
-      clearTimeout(toastTimeout);
-      copyToast.classList.add('show');
-      toastTimeout = setTimeout(() => copyToast.classList.remove('show'), 2500);
-    })
-    .catch(() => {
-      window.location.href = 'mailto:Contact@jacksonlowder.com';
-    });
-});

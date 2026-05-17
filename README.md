@@ -163,7 +163,7 @@ for page in doc:
 doc.save("output.pdf")
 ```
 
-Public contact: **Contact@jacksonlowder.com**
+Public contact: **[LinkedIn](https://www.linkedin.com/in/jackson-lowder-b29975a0/)**
 
 ---
 
