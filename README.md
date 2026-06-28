@@ -10,11 +10,12 @@ A fully custom, single-page professional portfolio and multi-page project showca
 
 | File | Description |
 |---|---|
-| `index.html` | Main single-page portfolio (Hero, About, Skills, Experience, Projects, Contact) |
+| `index.html` | Main single-page portfolio (Hero, About, Skills, Experience, Projects, Beyond Software, Contact) |
 | `OpenArchive.html` | Dedicated project page — Open Archive document management system |
 | `BEZNext.html` | Dedicated project page — BEZNext Query Performance Dashboard |
 | `CSITools.html` | Dedicated project page — CSI Office Automation Suite |
 | `MetaDataRemover.html` | Live interactive tool — client-side EXIF metadata remover |
+| `RebuiltCar.html` | Dedicated "Beyond Software" story page — rebuilding a car engine, framed as problem-solving |
 | `css/style.css` | Complete design system — CSS custom properties, no external CSS framework |
 | `js/main.js` | Vanilla JS — mobile nav, IntersectionObserver animations, active nav tracking, email copy |
 | `images/favicon.svg` | JL monogram SVG favicon |
@@ -53,12 +54,13 @@ All styling is defined through CSS custom properties in `css/style.css`.
 
 Single-page layout with smooth-scroll anchor navigation. Sections:
 
-1. **Hero** — Name, title, tagline, two CTAs (View My Work, Download Resume)
+1. **Hero** — Profile photo, name, title, tagline, two CTAs (View My Work, Download Resume)
 2. **About** — Bio + quick-facts card (education, location, email, GitHub, status)
 3. **Skills** — 6 grouped tag categories (see below)
 4. **Experience** — Vertical timeline with 4 real work entries
 5. **Projects** — Responsive card grid (8 cards) with FERPA badges, tech tags, and View Project / GitHub / Live Tool links
-6. **Contact** — Click-to-copy email, GitHub + LinkedIn social links
+6. **Beyond Software** — Non-software, problem-solving showcase; first entry links to the rebuilt-car engine story (`RebuiltCar.html`)
+7. **Contact** — Click-to-copy email, GitHub + LinkedIn social links
 
 **Skills categories:** Languages · Web & Development · Databases & Cloud · Data & Analytics · Automation & Tooling · Compliance & Security
 
@@ -83,6 +85,7 @@ Single-page layout with smooth-scroll anchor navigation. Sections:
 
 Full dedicated showcase for the Open Archive Django document management system. Includes:
 - Hero with tech tags and fake-data disclaimer banner (FERPA)
+- **Impact band + Before/After** — replaced a 2003 legacy system; 1→30 files per upload, hours→seconds per student, up to 100s of students in the same time
 - 7 overview cards (Document Management, Student Tracking, RBAC, External Data Sync, Automated Backups, AI Document Classification, Theme Customizer)
 - 9 alternating screenshot sections:
   - Dashboard, Students, Student Files (Folder View), Student Files (List View), Bulk Upload, AI Document Analysis, System Activity Log, Task Management, Theme Customizer
@@ -99,6 +102,7 @@ Full dedicated showcase for the Open Archive Django document management system. 
 
 Dedicated page for the internship project built at BEZNext (Summer 2023). Includes:
 - Hero labeled as Software Engineer Internship
+- **Impact band + Before/After** — find and cut the most expensive queries; 50%+ lower compute cost across Snowflake/Teradata/Oracle
 - 6 overview cards (Multi-Database Connectivity, Query Performance Analysis, Statistical Metrics, Oracle Workload Integration, Query Filtering & Controls, Query Text Popup)
 - 2 screenshot sections — Snowflake tab and Teradata tab
 - 5-step end-to-end workflow (form submit → Oracle pre-query → DB execution → pandas → HTML render)
@@ -110,6 +114,7 @@ Dedicated page for the internship project built at BEZNext (Summer 2023). Includ
 
 Dedicated page for internal Python desktop tools built at the Computer Systems Institute. Includes:
 - Hero with FERPA notice (details redacted)
+- **Impact band + Before/After** — multi-hour manual reporting reduced to minutes; one-click Outlook dispatch
 - 6 overview cards (Multi-Mode OCR Pipeline, Regex Extraction & Validation, Excel Auto-Fill Integration, Multi-Quarter Enrollment Processing, Windows COM Outlook Integration, FERPA-Compliant Design)
 - 2 screenshot sections:
   - **Attendance Sheet Tracker** — PyMuPDF + multi-PSM Tesseract OCR (PSM 3/6/11 at 5x zoom), 11 regex patterns, normalization, validation, `FillAttendanceSheetTracker` auto-filler
@@ -123,6 +128,20 @@ Dedicated page for internal Python desktop tools built at the Computer Systems I
 ### `MetaDataRemover.html` — Metadata Remover Tool
 
 Live browser-based tool. Strips EXIF and other metadata from images entirely client-side using the HTML5 Canvas API — no server upload. Supports drag-and-drop or click-to-browse. Preserves PNG format; defaults to JPEG for all other types.
+
+---
+
+### `RebuiltCar.html` — Beyond Software: Rebuilding a Car Engine
+
+A personal, non-software showcase that reuses the shared `project-detail-page` design system. It frames a real-world problem — needing reliable transportation between home and college during COVID without the budget for a working car — as a problem-solving story: buying a car with a blown engine, diagnosing it, tearing it down to root cause, and rebuilding it over roughly a year until it drove again.
+
+Structure:
+- Hero with a problem-focused subtitle and skill tags (Self-Taught, Problem Solving, Root-Cause Analysis, Persistence, Hands-On Learning)
+- **Problem / Approach / Outcome** overview cards
+- A captioned, chronological **photo gallery** (8 images from `images/RebuiltCar/`, lazy-loaded) walking from diagnosis → engine removal → teardown → cleaning → inspection → reassembly → finished rebuild
+- A **"What it taught me about engineering"** takeaway connecting the experience to software: systematic debugging, root-cause analysis, self-directed learning, persistence, and attention to detail
+
+Linked from the **Beyond Software** section on `index.html`. The headshot (`images/MyPicture.jpg`) is featured in the home hero.
 
 ---
 
