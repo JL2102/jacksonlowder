@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Spongebob Monopoly, Online — a complete custom multiplayer version of the game, hand-built by Jackson Lowder so his fiancée could play her favorite game with family across the country.">
+  <title>Spongebob Monopoly Online | Jackson Lowder</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="project-detail-page">
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-logo"><span>JL</span></a>
+      <ul class="navbar-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#beyond">Beyond</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="Jackson%20Lowder%20Resume%202026.pdf" target="_blank" rel="noopener" class="navbar-resume">Resume</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="project-hero">
+    <div class="project-hero-inner">
+      <a href="index.html#beyond" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        Back to Beyond Software
+      </a>
+      <p class="section-label">Beyond Software &#8212; Built for Someone I Love</p>
+      <h1 class="project-hero-title">Spongebob Monopoly, Online</h1>
+      <p class="project-hero-subtitle">My fianc&#233;e&#8217;s favorite game is Spongebob Monopoly &#8212; but her family lives across the country. She wanted a way to keep playing it together and hold onto those family bonds despite the distance. So I hand-built a complete, custom online version of the game from scratch, hosted it myself, and taught myself to run servers and networking so everyone could sit down at the same board from different states.</p>
+      <div class="project-hero-tags">
+        <span class="project-tag">Full-Stack</span>
+        <span class="project-tag">Real-Time Multiplayer</span>
+        <span class="project-tag">Python</span>
+        <span class="project-tag">WebSockets</span>
+        <span class="project-tag">JavaScript</span>
+        <span class="project-tag">Cloudflare Tunnel</span>
+        <span class="project-tag">Self-Hosted</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== WHY I BUILT IT ===== -->
+  <section class="project-overview">
+    <div class="project-overview-inner">
+      <p class="section-label">The Why</p>
+      <h2 class="section-title">A real problem, and someone who mattered</h2>
+      <div class="overview-grid">
+        <div class="overview-card">
+          <div class="overview-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h4>The Problem</h4>
+          <p>My fianc&#233;e&#8217;s favorite game is Spongebob Monopoly, but her family lives in another state. She wanted a way to keep playing it together &#8212; to keep those family bonds strong even across the country.</p>
+        </div>
+        <div class="overview-card">
+          <div class="overview-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h4>What I Built</h4>
+          <p>A complete, custom online version of the game &#8212; the board, the character pieces, the property deeds, and the rules &#8212; built from scratch and hosted on my own site so everyone could join from anywhere.</p>
+        </div>
+        <div class="overview-card">
+          <div class="overview-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h4>The Outcome</h4>
+          <p>Her family now plays together online from different states. A store-bought board game became a long-distance family tradition &#8212; and I picked up real server and networking skills making it happen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THE BUILD: BOARD ===== -->
+  <section class="project-section">
+    <div class="project-overview-inner">
+      <p class="section-label">The Build</p>
+      <h2 class="section-title">A complete custom version, made by hand</h2>
+      <div class="section-divider"></div>
+      <p class="feature-desc">Every part of the game is custom-made &#8212; the full board layout, the character playing pieces, and the Bikini Bottom property deeds were all assembled by hand and rendered for the web, then wired up to a real-time multiplayer engine.</p>
+      <div class="screenshot-frame" style="margin-top:32px;">
+        <img src="images/SpongebobOnline/generated-board-sharp.png" alt="The full custom-built Spongebob Monopoly game board" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HAND-MADE ASSETS GALLERY ===== -->
+  <section class="project-section">
+    <div class="project-overview-inner">
+      <p class="section-label">Hand-Made Assets</p>
+      <h2 class="section-title">Every piece, built for the game</h2>
+      <div class="section-divider"></div>
+      <p class="feature-desc">The playable character pieces, each one custom-made for the game.</p>
+      <div class="gallery-grid">
+
+        <figure class="gallery-figure asset">
+          <img src="images/SpongebobOnline/char-spongebob.png" alt="SpongeBob playing piece" loading="lazy">
+          <figcaption class="asset-caption">SpongeBob</figcaption>
+        </figure>
+        <figure class="gallery-figure asset">
+          <img src="images/SpongebobOnline/char-patrick.png" alt="Patrick playing piece" loading="lazy">
+          <figcaption class="asset-caption">Patrick</figcaption>
+        </figure>
+        <figure class="gallery-figure asset">
+          <img src="images/SpongebobOnline/char-squidward.png" alt="Squidward playing piece" loading="lazy">
+          <figcaption class="asset-caption">Squidward</figcaption>
+        </figure>
+        <figure class="gallery-figure asset">
+          <img src="images/SpongebobOnline/char-mrkrabs.png" alt="Mr. Krabs playing piece" loading="lazy">
+          <figcaption class="asset-caption">Mr. Krabs</figcaption>
+        </figure>
+        <figure class="gallery-figure asset">
+          <img src="images/SpongebobOnline/char-sandy.png" alt="Sandy playing piece" loading="lazy">
+          <figcaption class="asset-caption">Sandy</figcaption>
+        </figure>
+        <figure class="gallery-figure asset">
+          <img src="images/SpongebobOnline/char-gary.png" alt="Gary playing piece" loading="lazy">
+          <figcaption class="asset-caption">Gary</figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== UNDER THE HOOD ===== -->
+  <section class="project-overview">
+    <div class="project-overview-inner">
+      <p class="section-label">Under the Hood</p>
+      <h2 class="section-title">What it took to get everyone at the same table</h2>
+      <div class="overview-grid">
+        <div class="overview-card">
+          <div class="overview-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M5 12h14M5 12a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2M5 12a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2"/><line x1="7" y1="8" x2="7.01" y2="8"/><line x1="7" y1="16" x2="7.01" y2="16"/></svg>
+          </div>
+          <h4>Real-Time Multiplayer</h4>
+          <p>A Python WebSockets server keeps every player&#8217;s board in sync in real time &#8212; a move on one screen instantly updates everyone else&#8217;s, no matter where they are.</p>
+        </div>
+        <div class="overview-card">
+          <div class="overview-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+          </div>
+          <h4>Cloudflare Tunnel</h4>
+          <p>I taught myself to expose the game securely through a Cloudflare Tunnel &#8212; letting family across the country connect without opening router ports or exposing my home network.</p>
+        </div>
+        <div class="overview-card">
+          <div class="overview-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 7h3v3H7zM14 7h3v3h-3zM7 14h3v3H7zM14 14h3v3h-3z"/></svg>
+          </div>
+          <h4>Effortless to Join</h4>
+          <p>A generated QR code lets less-technical family members hop into a game in seconds from their phone &#8212; no setup, no installs, no instructions needed.</p>
+        </div>
+        <div class="overview-card">
+          <div class="overview-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          </div>
+          <h4>Custom Game Engine</h4>
+          <p>The board, pieces, and 30+ property deeds were generated and assembled by hand, then driven by a modular JavaScript board engine handling rules, turns, rendering, and game state.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY IT MATTERS ===== -->
+  <section class="project-section">
+    <div class="project-section-inner full">
+      <div class="takeaway">
+        <p class="feature-label">Why this one matters</p>
+        <h2 class="feature-title">The project I&#8217;m most proud of</h2>
+        <p class="feature-desc">This one wasn&#8217;t for a grade or a job &#8212; it was for someone I love. That made me push to learn things I&#8217;d never touched before, and it&#8217;s the clearest example of how I work when a problem actually matters:</p>
+        <ul class="feature-bullets">
+          <li><strong style="color:var(--text)">Learned servers &amp; networking by necessity</strong> &#8212; self-hosting and a Cloudflare Tunnel for secure remote access, picked up specifically to solve this.</li>
+          <li><strong style="color:var(--text)">Built real-time multiplayer from scratch</strong> &#8212; synchronizing game state across players in different states over WebSockets.</li>
+          <li><strong style="color:var(--text)">Designed a complete custom game</strong> &#8212; board, pieces, and 30+ property cards, all made by hand.</li>
+          <li><strong style="color:var(--text)">Made it genuinely usable</strong> &#8212; simple enough that the whole family, technical or not, actually plays it together.</li>
+          <li><strong style="color:var(--text)">Proved the best motivation is real people</strong> &#8212; the same drive I bring to building software that helps someone.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BACK LINK ===== -->
+  <section class="project-back-section">
+    <a href="index.html#beyond" class="btn btn-outline">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Back to Beyond Software
+    </a>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>Designed &amp; built by <a href="https://github.com/JL2102" target="_blank" rel="noopener">Jackson Lowder</a> &middot; <a href="index.html">jacksonlowder.com</a></p>
+  </footer>
+
+</body>
+</html>

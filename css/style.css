@@ -1532,3 +1532,19 @@ footer a:hover {
     grid-template-columns: 1fr;
   }
 }
+
+/* ===========================
+   ASSET GALLERY (custom game assets)
+=========================== */
+.gallery-figure.asset img {
+  object-fit: contain;
+  background: var(--bg-surface);
+  padding: 18px;
+  height: 220px;
+}
+
+.gallery-figure figcaption.asset-caption {
+  text-align: center;
+  font-weight: 600;
+  color: var(--text);
+}

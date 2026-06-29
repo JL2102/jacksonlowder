@@ -16,6 +16,7 @@ A fully custom, single-page professional portfolio and multi-page project showca
 | `CSITools.html` | Dedicated project page — CSI Office Automation Suite |
 | `MetaDataRemover.html` | Live interactive tool — client-side EXIF metadata remover |
 | `RebuiltCar.html` | Dedicated "Beyond Software" story page — rebuilding a car engine, framed as problem-solving |
+| `SpongebobMonopoly.html` | Dedicated "Beyond Software" story page — custom online Spongebob Monopoly built for family |
 | `css/style.css` | Complete design system — CSS custom properties, no external CSS framework |
 | `js/main.js` | Vanilla JS — mobile nav, IntersectionObserver animations, active nav tracking, email copy |
 | `images/favicon.svg` | JL monogram SVG favicon |
@@ -59,7 +60,7 @@ Single-page layout with smooth-scroll anchor navigation. Sections:
 3. **Skills** — 6 grouped tag categories (see below)
 4. **Experience** — Vertical timeline with 4 real work entries
 5. **Projects** — Responsive card grid (8 cards) with FERPA badges, tech tags, and View Project / GitHub / Live Tool links
-6. **Beyond Software** — Non-software, problem-solving showcase; first entry links to the rebuilt-car engine story (`RebuiltCar.html`)
+6. **Beyond Software** — Personal, problem-solving showcase; entries link to the rebuilt-car engine story (`RebuiltCar.html`) and the custom online Spongebob Monopoly game (`SpongebobMonopoly.html`)
 7. **Contact** — Click-to-copy email, GitHub + LinkedIn social links
 
 **Skills categories:** Languages · Web & Development · Databases & Cloud · Data & Analytics · Automation & Tooling · Compliance & Security
@@ -142,6 +143,22 @@ Structure:
 - A **"What it taught me about engineering"** takeaway connecting the experience to software: systematic debugging, root-cause analysis, self-directed learning, persistence, and attention to detail
 
 Linked from the **Beyond Software** section on `index.html`. The headshot (`images/MyPicture.jpg`) is featured in the home hero.
+
+---
+
+### `SpongebobMonopoly.html` — Beyond Software: Spongebob Monopoly, Online
+
+A personal, problem-solving showcase reusing the shared `project-detail-page` design system. Frames the project around its motivation: the developer's fiancée loves Spongebob Monopoly, but her family lives across the country, so he hand-built a complete custom online version of the game so they could keep playing together.
+
+Structure:
+- Hero with the personal story and tech tags (Full-Stack, Real-Time Multiplayer, Python, WebSockets, JavaScript, Cloudflare Tunnel, Self-Hosted)
+- **The Why** — Problem / What I Built / Outcome cards
+- **The Build** — the full custom game board
+- **Hand-Made Assets** gallery — character pieces + a sample of the 30+ Bikini Bottom property deeds (`images/SpongebobOnline/`)
+- **Under the Hood** — real-time multiplayer (Python WebSockets), Cloudflare Tunnel for secure remote play, QR-code joining, custom JavaScript board engine
+- **Why this one matters** — takeaway connecting the personal motivation to engineering skills (networking, self-hosting, real-time state)
+
+Linked from the **Beyond Software** section on `index.html`. Contains no links to the live game, by request.
 
 ---
 
